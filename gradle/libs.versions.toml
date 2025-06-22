@@ -26,7 +26,6 @@ guava = "32.1.2-jre"
 openregex = "1.1.1"
 indriya = "1.3"
 language_detector = "0.6-2"
-hunspell = "2.1.2"
 javax_activation_api = "1.2.0"
 javax_annotation_api = "1.3.2"
 opennlp = "1.5"
@@ -106,7 +105,6 @@ indriya = {group = "tech.units", name = "indriya", version.ref = "indriya"}
 hankcs = {group = "com.hankcs", name = "aho-corasick-double-array-trie", version = "1.2.2"}
 hanlp = {group = "com.hankcs", name = "hanlp", version = "portable-1.8.2"}
 language-detector = {group = "org.omegat", name = "language-detector", version.ref = "language_detector"}
-dumonts-hunspell = {group = "com.gitlab.dumonts", name = "hunspell", version.ref = "hunspell"}
 morfologik-fsa = {group = "org.carrot2", name = "morfologik-fsa", version.ref = "morfologik"}
 morfologik-builders = {group = "org.carrot2", name = "morfologik-fsa-builders", version.ref = "morfologik"}
 morfologik-speller = {group = "org.carrot2", name = "morfologik-speller", version.ref = "morfologik"}
