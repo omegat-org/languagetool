@@ -35,8 +35,8 @@ public final class Hunspell {
   static final boolean FORCE_TEMP_FILES = "true".equals(System.getenv("HUNSPELL_FORCE_TEMP_FILES"));
 
   private static final Map<LanguageAndPath, HunspellDictionary> map = new HashMap<>();
-  private static BiFunction<Path, Path, HunspellDictionary> hunspellDictionaryFactory = DumontsHunspellDictionary::new;
-  private static Factory hunspellDictionaryStreamFactory = viaTempFiles(DumontsHunspellDictionary::new);
+  private static BiFunction<Path, Path, HunspellDictionary> hunspellDictionaryFactory = LuceneHunspellDictionary::new;
+  private static Factory hunspellDictionaryStreamFactory = viaTempFiles(LuceneHunspellDictionary::new);
 
   /**
    * @deprecated Use {@link #setHunspellStreamFactory}
