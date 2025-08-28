@@ -18,7 +18,9 @@ dependencies {
     api(libs.jaxb.api)
     api(libs.slf4j.api)
     implementation(libs.trove4j)
-    implementation(libs.emoji.java)
+    implementation(libs.emoji.java) {
+        exclude(module = "json")
+    }
     implementation(libs.hppc)
     implementation(libs.jackson.databind)
     implementation(libs.dumonts.hunspell)
