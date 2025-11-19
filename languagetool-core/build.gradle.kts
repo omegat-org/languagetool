@@ -42,7 +42,11 @@ dependencies {
     implementation(libs.javax.activation.api)
     implementation(libs.javax.annotation.api)
     implementation(libs.javax.measure.unit)
-    implementation(libs.loomchild.segment)
+    implementation(libs.loomchild.segment) {
+        exclude("javax.xml.bind", "jaxb-api")
+        exclude("com.sun.xml.bind", "jaxb-core")
+        exclude("com.sun.xml.bind", "jaxb-impl")
+    }
     implementation(libs.commons.lang)
     implementation(libs.commons.pool)
     implementation(libs.commons.text)
