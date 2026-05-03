@@ -33,7 +33,7 @@ public final class Hunspell {
   }
 
   private static final Map<LanguageAndPath, HunspellDictionary> map = new HashMap<>();
-  private static BiFunction<Path, Path, HunspellDictionary> hunspellDictionaryFactory = DumontsHunspellDictionary::new;
+  private static BiFunction<Path, Path, HunspellDictionary> hunspellDictionaryFactory = LuceneHunspellDictionary::new;
 
   public static void setHunspellDictionaryFactory(BiFunction<Path, Path, HunspellDictionary> factory) {
     hunspellDictionaryFactory = factory;

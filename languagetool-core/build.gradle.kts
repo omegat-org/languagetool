@@ -23,7 +23,6 @@ dependencies {
     }
     implementation(libs.hppc)
     implementation(libs.jackson.databind)
-    implementation(libs.dumonts.hunspell)
     implementation(libs.guava)
     implementation(libs.hankcs)
     implementation(libs.language.detector)
@@ -51,6 +50,7 @@ dependencies {
     implementation(libs.commons.pool)
     implementation(libs.commons.text)
     implementation(libs.lucene.core)
+    implementation(libs.lucene.analyzers.common)
     implementation(libs.lucene.backward.codecs)
     implementation(libs.morfologik.fsa)
     implementation(libs.morfologik.builders)
