@@ -34,6 +34,26 @@ nexusPublishing.repositories {
     }
 }
 
+val signKey = listOf("signingKey", "signing.keyId", "signing.gnupg.keyName").find {project.hasProperty(it)}
+tasks.withType<Sign> {
+    onlyIf { signKey != null }
+}
+
+signing {
+    when (signKey) {
+        "signingKey" -> {
+            val signingKey: String? by project
+            val signingPassword: String? by project
+            useInMemoryPgpKeys(signingKey, signingPassword)
+        }
+        "signing.keyId" -> {
+        }
+        "signing.gnupg.keyName" -> {
+            useGpgCmd()
+        }
+    }
+}
+
 val wholeProjects by configurations.creating
 
 repositories {
