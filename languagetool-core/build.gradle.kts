@@ -15,7 +15,6 @@ sourceSets {
 }
 
 dependencies {
-    api(libs.jaxb.api)
     api(libs.slf4j.api)
     implementation(libs.trove4j)
     implementation(libs.emoji.java) {
@@ -41,11 +40,7 @@ dependencies {
     implementation(libs.javax.activation.api)
     implementation(libs.javax.annotation.api)
     implementation(libs.javax.measure.unit)
-    implementation(libs.loomchild.segment) {
-        exclude("javax.xml.bind", "jaxb-api")
-        exclude("com.sun.xml.bind", "jaxb-core")
-        exclude("com.sun.xml.bind", "jaxb-impl")
-    }
+    implementation(libs.loomchild.segment)
     implementation(libs.commons.lang)
     implementation(libs.commons.pool)
     implementation(libs.commons.text)
@@ -56,7 +51,6 @@ dependencies {
     implementation(libs.morfologik.builders)
     implementation(libs.morfologik.speller)
     implementation(libs.morfologik.stemming)
-    implementation(libs.jaxb.runtime)
     implementation(libs.jetbrains.annotations)
     implementation(libs.json)
     implementation(libs.indriya)
@@ -64,6 +58,7 @@ dependencies {
     implementation(libs.guava)
     implementation(libs.java.diff.utils)
     implementation(libs.fastutil)
+    // runtimeOnly(libs.jaxb.runtime)
     testFixturesApi(project(":languagetool-core"))
     testFixturesApi(libs.junit4)
     testFixturesImplementation(libs.morfologik.stemming)

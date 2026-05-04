@@ -15,8 +15,6 @@ icu4j = "78.1"
 lombok = "1.18.22"
 logback = "1.5.18"
 slf4j = "2.0.17"
-jaxb_api = "4.0.4"
-jaxb = "4.0.6"
 annotations = "23.1.0"
 jackson = "2.19.1"
 morfologik = "2.1.9"
@@ -69,8 +67,6 @@ logback-ecs-encoder = {group = "co.elastic.logging", name = "logback-ecs-encoder
 
 # parser
 json = {group = "org.json", name ="json", version.ref = "json_java"}
-jaxb-api = {group = "jakarta.xml.bind", name = "jakarta.xml.bind-api", version.ref = "jaxb_api" }
-jaxb-runtime = {group = "org.glassfish.jaxb", name = "jaxb-runtime", version.ref = "jaxb"}
 jackson-databind = {group ="com.fasterxml.jackson.core", name = "jackson-databind", version.ref = "jackson"}
 
 # annotation
