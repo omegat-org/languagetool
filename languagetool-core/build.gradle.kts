@@ -15,7 +15,6 @@ sourceSets {
 }
 
 dependencies {
-    api(libs.jaxb.api)
     api(libs.slf4j.api)
     implementation(libs.trove4j)
     implementation(libs.emoji.java)
@@ -50,7 +49,6 @@ dependencies {
     implementation(libs.morfologik.builders)
     implementation(libs.morfologik.speller)
     implementation(libs.morfologik.stemming)
-    implementation(libs.jaxb.runtime)
     implementation(libs.jetbrains.annotations)
     implementation(libs.json)
     implementation(libs.indriya)
