@@ -15,11 +15,10 @@ tasks.wrapper {
 
 val ossrhUsername: String? by project
 val ossrhPassword: String? by project
-
 nexusPublishing.repositories {
     sonatype {
-        stagingProfileId = "15818299f2c2bb"
-        nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+        nexusUrl.set(uri("https://ossrh-staging-api.central.sonatype.com/service/local/"))
+        snapshotRepositoryUrl.set(uri("https://central.sonatype.com/repository/maven-snapshots/"))
         if (ossrhUsername != null && ossrhPassword != null) {
             username.set(ossrhUsername)
             password.set(ossrhPassword)
