@@ -1033,6 +1033,7 @@ ROIC
 Altria
 PFOS
 PFAS
+PFASs
 VOC
 VOCs
 Bartleby
@@ -11025,7 +11026,13 @@ resourcing
 Leavitt
 Panagiotis
 perf
+proj
+QD
+QDs
 ln
+SDAX
+interop
+Bandreddy
 Bookmarksgrove
 capitalizeable
 uncapitalizeable
@@ -11033,6 +11040,8 @@ uncapitalizable
 noncapitalizeable
 noncapitalizable
 inerts
+JDs
+McMaster
 Kanto
 Kantō
 Darden
@@ -11046,3 +11055,12 @@ approximant
 approximants
 Francian
 Ally
+notabene
+Gatorade
+Esperanza
+Wakatsuki
+Soto
+Odilia
+Fuentes
+tsp
+tbsp

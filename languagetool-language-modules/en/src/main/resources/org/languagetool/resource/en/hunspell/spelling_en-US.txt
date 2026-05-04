@@ -15,9 +15,17 @@ pentasulfide
 pentasulfides
 polysulfide
 polysulfides
+grayout
+gray-out
+grayouts
+gray-outs
 preorder
 preordered
 preordering
+reprioritize
+reprioritized
+reprioritizes
+reprioritizing
 deprioritize
 deprioritized
 deprioritizes
@@ -28,3 +36,6 @@ sulfides
 tetrasulfide
 tetrasulfides
 uncapitalizable
+practicum
+practicums
+practica

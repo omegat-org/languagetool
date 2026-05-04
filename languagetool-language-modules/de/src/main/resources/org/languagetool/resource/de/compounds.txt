@@ -11593,6 +11593,8 @@ Mocro-Mafia*
 Burning-Man-Festival*
 Higgs-Teilchen*
 Higgs-Teilchens*
+Alabali-Radovan*
+Alabali-Radovans*
 Scripted-Reality-Star*
 Scripted-Reality-Stars*
 Scripted-Reality-Sendung*
@@ -11600,6 +11602,15 @@ Scripted-Reality-Sendungen*
 Scripted-Reality-Show*
 Scripted-Reality-Shows*
 Chagos-Archipel*
+Naan-Brot*
+Naan-Brots*
+Naan-Brote*
+Naan-Broten*
+Fett-weg-Spritze*
+Fett-weg-Spritzen*
+EUR-Hedged-ETF*
+EUR-Hedged-ETFs*
+Effenberg-Bank*
 Drive-by-Shooting*
 Drive-by-Shootings*
 SIM-Lock*
@@ -11629,6 +11640,7 @@ Inhouse-Seminars$
 Inhouse-Seminare$
 Inhouse-Seminares$
 Inhouse-Seminaren$
+Texcoco-See*
 Rafale-Jet*
 Rafale-Jets*
 Rafale-Kampfjet*

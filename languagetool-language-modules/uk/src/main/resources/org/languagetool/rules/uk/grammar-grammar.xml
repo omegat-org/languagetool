@@ -62,7 +62,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <exception negate_pos="yes" postag_regexp="yes" postag="prep.*" />
         </token>
         <token postag_regexp="yes" postag="verb.*">
-          <exception negate_pos="yes" postag_regexp="yes" postag="verb.*|noninfl:&amp;(p|i).*|SENT_END|PARA_END" />
+          <exception negate_pos="yes" postag_regexp="yes" postag="verb.*|noninfl:(p|i).*|SENT_END|PARA_END" />
         </token>
       </pattern>
       <message>Прийменник \1 перед дієсловом <suggestion>\2</suggestion></message>
@@ -108,7 +108,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <token postag_regexp="yes" postag="verb.*">
               <exception postag_regexp="yes" postag="verb.*:inf.*"/>
               <exception regexp="yes">було(-би?)?|буде</exception>
-              <exception negate_pos="yes" postag_regexp="yes" postag="verb.*|noninfl:&amp;(i|p).*|SENT_END|PARA_END"/>
+              <exception negate_pos="yes" postag_regexp="yes" postag="verb.*|noninfl:(i|p).*|SENT_END|PARA_END"/>
             </token>
           </marker>
         </pattern>
@@ -2195,7 +2195,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         <message>Можливо, іменник має бути у кличному відмінку?</message>
         <suggestion><match no="2" postag_regexp="yes" postag="(noun:anim:.:)(v_naz|v_zna|v_dav)(.*)" postag_replace="$1v_kly$3"/>, <match no="4"/></suggestion>
         <example correction="Олено, ходім"><marker>Олена, ходім</marker> додому.</example>
+        <!--
         <example correction="Христе, ходім"><marker>Христю, ходім</marker> додому.</example>
+        -->
         <example correction="Відьмаче, ходім"><marker>Відьмаку, ходім</marker> додому.</example>
         <!--
         <example correction="Насте, ходім"><marker>Настю ходім</marker> додому.</example>

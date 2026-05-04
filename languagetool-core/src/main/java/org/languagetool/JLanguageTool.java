@@ -622,14 +622,64 @@ public class JLanguageTool {
   }
 
   public void activateRemoteRules(List<RemoteRuleConfig> configs) throws IOException {
-    List<RemoteRuleConfig> remoteRuleConfigs = new ArrayList<>(configs);
-    if (!userConfig.isTrustedSource()) {
-      remoteRuleConfigs = configs.stream().filter(remoteRuleConfig -> !remoteRuleConfig.getOptions().getOrDefault("onlyTrustedSources", "false").equals("true")).collect(Collectors.toList());
+    // Apply A/B test filtering first - can affect which rules get enabled and thus disabled because of fallback settings
+    List<String> activeAbTestsForUser = userConfig.getAbTest();
+    List<RemoteRuleConfig> selectedConfigsByUserSettings = configs.stream()
+      .filter(config -> {
+        if (!userConfig.isPremium() && config.isPremium()) {
+          return false;
+        }
+        String excludeABTest = config.getOptions().get("excludeABTest");
+        if (excludeABTest != null && activeAbTestsForUser != null &&
+          activeAbTestsForUser.stream().anyMatch(flag -> flag.matches(excludeABTest))) {
+          return false;
+        }
+        String activeRemoteRuleAbTest = config.getOptions().get("abtest");
+        if (activeRemoteRuleAbTest != null && !activeRemoteRuleAbTest.trim().isEmpty()) {
+          if (activeAbTestsForUser == null) {
+            return false;
+          }
+          return activeAbTestsForUser.stream().anyMatch(test -> test.matches(activeRemoteRuleAbTest));
+        }
+        return true;
+      })
+      .toList();
+
+    List<RemoteRuleConfig> effectiveConfigs = new ArrayList<>();
+
+    // Then, determine effective configurations based on user opt-in for third-party AI
+    if (!userConfig.isOptInThirdPartyAI()) {
+      for (RemoteRuleConfig config : selectedConfigsByUserSettings) {
+        if (config.isUsingThirdPartyAI()) {
+          RemoteRuleConfig remoteRuleConfig = RemoteRuleFallbackManager.INSTANCE.getInhouseFallback(config.getRuleId());
+          if (remoteRuleConfig != null && !effectiveConfigs.contains(remoteRuleConfig)) {
+              effectiveConfigs.add(remoteRuleConfig);
+            }
+        } else {
+          effectiveConfigs.add(config);
+        }
+      }
+    } else {
+      for (RemoteRuleConfig config : selectedConfigsByUserSettings) {
+        if (config.isUsingThirdPartyAI() && config.getFallbackRuleId() != null) {
+          disableRule(config.getFallbackRuleId());
+        }
+      }
+      effectiveConfigs.addAll(selectedConfigsByUserSettings);
     }
-    List<Rule> rules = language.getRelevantRemoteRules(getMessageBundle(language), remoteRuleConfigs,
+
+    // Apply trusted source filtering
+    if (!userConfig.isTrustedSource()) {
+      effectiveConfigs = effectiveConfigs.stream()
+        .filter(config -> !config.getOptions().getOrDefault("onlyTrustedSources", "false").equals("true"))
+        .collect(Collectors.toList());
+    }
+    
+    // Proceed with rule activation using filtered configs
+    List<Rule> rules = language.getRelevantRemoteRules(getMessageBundle(language), effectiveConfigs,
       globalConfig, userConfig, motherTongue, altLanguages, inputLogging);
     userRules.addAll(rules);
-    Function<Rule, Rule> enhanced = language.getRemoteEnhancedRules(getMessageBundle(language), remoteRuleConfigs, userConfig, motherTongue, altLanguages, inputLogging);
+    Function<Rule, Rule> enhanced = language.getRemoteEnhancedRules(getMessageBundle(language), effectiveConfigs, userConfig, motherTongue, altLanguages, inputLogging);
     transformRules(enhanced, builtinRules);
     transformRules(enhanced, userRules);
     ruleSetCache.clear();

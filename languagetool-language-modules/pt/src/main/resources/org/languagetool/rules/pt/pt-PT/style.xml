@@ -68,7 +68,7 @@ USA
 <!ENTITY gerundio_excecoes_verbos_nao_auxiliares "abaixando|abrindo|acabando|acendendo|achando|aconselhando|acontecendo|acordando|afundando|ajudando|amando|apagando|aprendendo|aquecendo|arrefecendo|assando|aumentando|bebendo|berrando|bocejando|bordando|brincando|cantando|carregando|chegando|choramingando|chorando|começando|comendo|compartilhando|comprando|conduzindo|conectando|congelando|consertando|considerando|construindo|correndo|cortando|costurando|cozinhando|criando|criticando|dançando|degradando|degustando|deixando|derretendo|descarregando|descendo|descobrindo|desconectando|desenhando|deslizando|destruindo|digerindo|digitando|diminuindo|dirigindo|disparando|dizendo|dormindo|editando|elaborando|elogiando|empurrando|engolindo|ensinando|entendendo|entrando|escalando|escondendo|escorregando|escrevendo|escurecendo|esperando|espirrando|esquecendo|explorando|falando|fazendo|fechando|fervendo|filmando|fluindo|flutuando|fritando|ganhando|gostando|gravando|grelhando|gritando|guiando|iluminando|instalando|inventando|jogando|lavando|lembrando|lesando|levantando|mastigando|mergulhando|morrendo|nadando|navegando|odiando|olhando|orientando|ouvindo|parando|passando|pensando|perdendo|perguntando|pilotando|pintando|provando|publicando|pulando|puxando|quebrando|querendo|rastejando|reclamando|refogando|reforçando|reparando|resmungando|respirando|respondendo|rindo|sabendo|saindo|saltando|segurando|sendo|sentindo|servindo|sofrendo|sorrindo|subindo|suspirando|sussurrando|teclando|temperando|terminando|tornando|tossindo|trabalhando|travando|tropeçando|usando|vendendo|vendo|viajando|vivendo|voando|voltando">
 
 <!-- Termos informais específicos pt_PT - the rule also tests with adding a "s" (plural) at the end of each word -->
-<!ENTITY informal "abéculas?|ajavardar|anhar|anjinhos?|bacan[ao]s?|badalos?|baita|baixinh[ao]s?|balof[ao]s?|baril|barracadas?|batelada|baza|bazam|bazas|bazaste|bazei|bazámos|bazamos|beijoqueir[ao]s?|bejecas?|bezanas?|bichan[ao]s?|bichinh[ao]s?|biscates?|bitaites?|blablablá|boazonas?|bonz(ão|ões)|bófias?|bonzudos?|bora|bués?|cadê|calhamaços?|camandros?|camisinhas?|caraças|carago|caramba|carangos?|carradas?|casinhas?|casórios?|caxamolas?|certinh[ao]s?|chaval[ao]s?|chilindrós?|cocó|coisar|copião|cornear|cum|cuscar|cusc[ao]s?|cuzinhos?|danad[ao]s?|drunfos?|encrencas?|engonhanço|engonhar|epa|esbardalhar|estrambótic[ao]s?|estrilho|fartazanas?|festarolas?|fezadas?|fixes|fixolas|fofinh[ao]s?|fónix|gabarolas?|gaj[ao]s?|garinas?|gatunar|gentinhas?|gosmas?|guit[ao]|gunas?|janad[ao]s?|javardices?|jolas?|larachas?|lelés?|mãezinhas?|mamalhud[ao]s?|mamocas?|man[ao]s?|marad[ao]s?|maralhas?|marimbar|milhent[ao]s?|moinas?|motoqueir[ao]s?|népias?|oi|olhómetros?|paizinhos?|papão|papo|passarocas?|peid[ao]s?|peidar|petiza?|piegas|porrada|porre|porreiros?|poucochinhos?|prenhas?|putos?|quecas?|queridinh[ao]s?|rabiosques?|rapaziadas?|tabefes?|tadinh[ao]s?|tanas|trampas?|transar|traques?|tretas?|trouxas?|vaquinhas?|velhot[ae]s?|vó|vô|xi|xixi|zilh(ão|ões)">
+<!ENTITY informal "abéculas?|ajavardar|anhar|anjinhos?|bacan[ao]s?|badalos?|baita|baixinh[ao]s?|balof[ao]s?|baril|barracadas?|batelada|baza|bazam|bazas|bazaste|bazei|bazámos|bazamos|beijoqueir[ao]s?|bejecas?|bezanas?|bichan[ao]s?|bichinh[ao]s?|biscates?|bitaites?|blablablá|boazonas?|bonz(ão|ões)|bófias?|bonzudos?|bora|bués?|cadê|calhamaços?|camandros?|camisinhas?|caraças|carago|caramba|carangos?|carradas?|casinhas?|casórios?|caxamolas?|certinh[ao]s?|chaval[ao]s?|chilindrós?|cocó|coisar|copião|cornear|cum|cuscar|cusc[ao]s?|cuzinhos?|danad[ao]s?|drunfos?|encrencas?|engonhanço|engonhar|epa|esbardalhar|estrambótic[ao]s?|estrilho|fartazanas?|festarolas?|fezadas?|fixes|fixolas|fofinh[ao]s?|fónix|gabarolas?|gaj[ao]s?|garinas?|gatunar|gentinhas?|gosmas?|guit[ao]|gunas?|janad[ao]s?|javardices?|jolas?|larachas?|lelés?|mãezinhas?|mamalhud[ao]s?|mamocas?|man[ao]s?|marad[ao]s?|maralhas?|marimbar|milhent[ao]s?|moinas?|motoqueir[ao]s?|népias?|oi|olhómetros?|paizinhos?|papão|papo|passarocas?|peid[ao]s?|peidar|petiza?|piegas|porrada|porre|porreiros?|poucochinhos?|prenhas?|putos?|quecas?|queridinh[ao]s?|rabiosques?|rapaziadas?|tabefes?|tadinh[ao]s?|tanas|topar|trampas?|transar|traques?|tretas?|trouxas?|vaquinhas?|velhot[ae]s?|vó|vô|xi|xixi|zilh(ão|ões)">
 
 <!-- Estrangeirismos específicos pt_PT - the rule also tests with adding a "s" (plural) at the end of each word -->
 <!ENTITY barbarismos "accelerandos?|agitato|allegretto|allegro|amabile|apfelstrudel|backups?|badine|bavaroise|beagle|becquerel|bip|blague|blister|boate|bonsai|breakdance|brie|cache-sexe|calzone|camber|campus|caniche|cânon|cantabile|cantata|carpaccio|chaise-longue|charleston|chartreuse|cheddar|clarke|clear|clearance|cloisonné|códex|coloratura|continuum|cookies?|cordon-bleu|corpus|coulomb|crevasse|croissant|cumbia|czarina|datcha|debye|deficit|design|designers?|doping|doppler|drives?|duce|duplex|ecstasy|ensalada|ensemble|entente|evasé|fait-divers|fanfreluche|farads?|fatwa|fax|fermata|flamenco|flash|flashes|fondue|forint|fortran|fox|freeware|fugato|funk|gay|glamour|glide|gospel|gouda|grunge|guaracha|habanera|habitat|habitus|hip-hop|hippies?|homo|horseball|hype|ibidem|id|impedimenta|influenza|in-octavo|interferon|internet|item|jacuzzi|jamboree|jazz|joint-venture|joule|junkies?|kamikazes?|karaoke|karting|kasba|ketchup|kina|kitchenette|kuna|kwacha|kwanza|lamé|larghetto|leasing|legato|lingerie|locus|maestoso|majorette|mambo|managers?|maquis|marketing|maser|matrioska|maxwell|microfarad|milcurie|miserere|misters?|modems?|moderato|modus|mohair|muesli|mvdol|napalm|necessaire|net|new-age|noir|nomenklatura|nuance|nylon|offshores?|opus|origami|ossobuco|ouguiya|paanga|pahoehoe|paparazzi|parsec|patchouli|pecorino|pence|perestroika|petit-suisse|pianoforte|pickles?|piercing|pilé|pince-nez|pinscher|playboys?|poche|pogrom|poise|poodle|pop|posteriori|pot-pourri|práxis|priori|prise|promenade|punks?|putter|puzzle|quantum|quark|quiche|ralenti|rallentando|rave|ready-made|reggae|régie|reprise|reps|réveillon|rickettsia|rinforzando|ritardando|rocaille|rodeo|roentgen|rookie|rubato|samples?|sashimi|scherzando|scherzo|scone|set|setter|sexy|sfogato|sforzando|shareware|shar-pei|shiatsu|shopping|sic|sidecar|sievert|single|skates?|slalom|smorzando|socialite|sottovoce|soul|spas?|spins?|sprays?|sprue|staccato|stands?|stilb|stock|stop|stress|strippers?|superstars?|surf|sushi|tai-chi|tandem|tavolatura|techno|teflon|telex|terylene|tickets?|timeshare|tiramisu|tofu|toner|tópos|tops?|tori|trailer|tremolo|trial|triplex|tsunami|tupperware|tutilimúndi|tutti|tutu|vaudeville|velcro|vernissage|vibrato|vide|vides|vintage|vitae|vitrine|vivace|volte-face|waffle|web|weber|yang|yeti|yin|yuppie">
@@ -76,7 +76,7 @@ USA
 <!ENTITY barbarismos_rev3 "afición|aficiones|blockchains?|bodyboarders?|bolds?|buffers?|bugs?|builds?|bunkai|cents?|check-ins?|chipsets?|clusters?|cookie-cutters?|cover-ups?|crowdfundings?|crowdsourcings?|default|desktops?|drafts?|emojis?|emoticons?|fanzines?|feedbacks?|flags?|footnotes?|frameworks?|friendly|futons?|gaps?|geocachers?|geocaching|gilberts?|health|heights?|hotspots?|hoverboards?|icebergs?|input-output|interfaces?|jetpacks?|knowing-doing|logs?|LEDs?|likes?|marketplaces?|nudes?|open-source|overclockings?|pidgins?|podcasts?|previews?|rankings?|rap|reviews?|scams?|scammers?|scripts?|skippers?|smileys?|snipers?|spoofing|spreads?|sticks?|sudokus?|takeovers?|tatamis?|tokens?|top-down|trackpads?|thrashers?|trackings?|tweets?|underground|Unicode|uploads?|walkie-talkies?|warm-ups?|webcams?|webinars?|webmail|webmasters?|whalewatching|widths?|woks?|yeah|yes-man|zen|zooms?">
 
 <!-- Termos depreciativos específicos pt_PT - the rule uses inflected='yes' to get all forms -->
-<!ENTITY depreciativo_pt_pt "alarve|alarvezinho|aldrabão|aldrabãozinho|badalhoco|badalhocozinho|badameco|badamecozinho|baianada|baianadinha|bandalho|bandalhozinho|bêbadinho|bêbado|betinho|bimbalhada|bimbalhadinha|bimbinho|bimbo|bocó|bocozinho|bosta|bostinha|brasuca|brasuquinha|brega|breguinha|bumbinho|bumbo|cabrão|cabrãozinho|caguinchas|caguinchinhas|calão|calãozinho|campónio|campóniozinho|caralhão|caralhãozinho|chacha|chachinha|chico-espertinho|chico-esperto|china|chininha|chinoca|chinocinha|choninhas|chulo|chunga|chungaria|chunguice|ciganada|ciganagem|coirão|coninhas|crápula|cretino|escarumba|escória|escumalha|espertalhão|espertinho|estúpido|fanfarrão|fufa|gagá|gajo|gandulo|generaleco|gentalha|gentiaga|gordalhão|gordalhãozinho|idiota|idiotinha|imbecil|imbecilzinho|indigente|japa|japinha|labrego|labreguinho|lamechas|lamechinhas|larilas|larilinhas|lorpa|lorpinha|malditinho|maldito|maltrapilho|manientinho|maniento|maricão|maricãozinho|maricas|mariconcinho|mariconço|mariquinhas|mentecaptinho|mentecapto|mitra|mitrinha|molenga|molengão|molengãozinho|molenguinha|monhé|monhézinho|morcão|morcãozinho|negralhada|negralhadinha|nhurrice|nhurrinha|nhurrinho|nhurro|otário|pacóvio|palerma|palerminha|panaca|panaquinha|panasca|panasquinha|paneleirinho|paneleiro|panilas|panilinhas|parolinho|parolo|parvinho|parvo|parvozinho|patego|pateguinho|pelintra|pelintrinha|pindérico|pindéricozinho|pita|pitinha|pito|portuga|portuguinha|pretalhada|pretalhadinha|pretaria|pretarinha|prostituta|prostitutinha|pulha|pulhinha|puta|putinha|rabeta|rabetinha|ralé|reles|sacana|sacaninha|tansinho|tanso|tolinho|tolo|tótó|tuga|tuguinha|velhaco|velhaquinho|vigarista|vigaristinha|zé-ninguém|zé-povinho">
+<!ENTITY depreciativo_pt_pt "alarve|alarvezinho|aldrabão|aldrabãozinho|badalhoco|badalhocozinho|badameco|badamecozinho|baianada|baianadinha|bandalho|bandalhozinho|bêbadinho|bêbado|beleguim|betinho|bimbalhada|bimbalhadinha|bimbinho|bimbo|bocó|bocozinho|bosta|bostinha|brasuca|brasuquinha|brega|breguinha|bumbinho|bumbo|cabrão|cabrãozinho|caguinchas|caguinchinhas|calão|calãozinho|campónio|campóniozinho|caralhão|caralhãozinho|chacha|chachinha|chico-espertinho|chico-esperto|china|chininha|chinoca|chinocinha|choninhas|chulo|chunga|chungaria|chunguice|ciganada|ciganagem|coirão|coninhas|crápula|cretino|escarumba|escória|escumalha|espertalhão|espertinho|estúpido|fanfarrão|fufa|gagá|gajo|gandulo|generaleco|gentalha|gentiaga|gordalhão|gordalhãozinho|idiota|idiotinha|imbecil|imbecilzinho|indigente|japa|japinha|labrego|labreguinho|lamechas|lamechinhas|larilas|larilinhas|lorpa|lorpinha|malditinho|maldito|maltrapilho|manientinho|maniento|maricão|maricãozinho|maricas|mariconcinho|mariconço|mariquinhas|mentecaptinho|mentecapto|mitra|mitrinha|molenga|molengão|molengãozinho|molenguinha|monhé|monhézinho|morcão|morcãozinho|negralhada|negralhadinha|nhurrice|nhurrinha|nhurrinho|nhurro|otário|pacóvio|palerma|palerminha|panaca|panaquinha|panasca|panasquinha|paneleirinho|paneleiro|panilas|panilinhas|parolinho|parolo|parvinho|parvo|parvozinho|patego|pateguinho|pelintra|pelintrinha|pindérico|pindéricozinho|pita|pitinha|pito|portuga|portuguinha|pretalhada|pretalhadinha|pretaria|pretarinha|prostituta|prostitutinha|pulha|pulhinha|puta|putinha|rabeta|rabetinha|ralé|reles|sacana|sacaninha|tansinho|tanso|tolinho|tolo|tótó|tuga|tuguinha|velhaco|velhaquinho|vigarista|vigaristinha|zé-ninguém|zé-povinho">
 
 <!ENTITY verbos_informais "és|estás|tens|tenhas">
 
@@ -231,7 +231,7 @@ USA
 
 
         <!-- EM RELAÇÃO À SITUAÇÃO relativamente à situação -->
-        <rulegroup id='EM_RELAÇÃO_RELATIVAMENTE_PT_PT' name="[pt-PT][Simplificar] Em relação a/à(s)/ao(s) → relativamente a/à(s)/ao(s)" type='style' tone_tags="objective">
+        <rulegroup id='EM_RELAÇÃO_RELATIVAMENTE_PT_PT' name="[pt-PT][Simplificar] Em relação → relativamente" type='style' tone_tags='objective'>
         <!-- Created by Marco A.G.Pinto, Portuguese rule 2023-01-25 + 2023-02-14 (25-JUL-2022+) -->
         <!--
             O que fazer em relação a esta situação? → O que fazer relativamente a esta situação?
@@ -241,6 +241,15 @@ USA
 
             Preposition "a" was the one causing the problems because of the crasis issue.
         -->
+
+        <antipattern> <!-- "em relação à média" is a statistical term -->
+            <token>em</token>
+            <token>relação</token>
+            <token>à</token>
+            <token>média</token>
+            <example>Isto é feito em relação à média.</example>
+            <example>Daqueles que têm capacidade e potencial superior em relação à média da população.</example>
+        </antipattern>
 
         <!-- A -->
             <rule>
@@ -291,9 +300,7 @@ USA
 </rulegroup>
 
 
-    <!-- VELHA ESCOLA velha guarda -->
-    <!--      Created by Marco A.G.Pinto, Portuguese rule 2020-10-27 (21-OCT-2020+)     -->
-    <rule id='VELHA_ESCOLA_VELHA_GUARDA' name="[pt-PT] Velha escola → Velha guarda" tone_tags="formal">
+    <rule id='VELHA_ESCOLA_VELHA_GUARDA' name="[pt-PT] Velha 'escola' → guarda" tone_tags='formal'>
         <pattern>
             <token inflected='yes'>ser</token>
             <token>da</token>
@@ -302,9 +309,11 @@ USA
                 <token>escola</token>
             </marker>
         </pattern>
-        <message>Se for uma frase idiomática, utilize <suggestion>guarda</suggestion>.</message>
+        <message>Se for uma expressão idiomática, utilize <suggestion>guarda</suggestion>.</message>
         <example correction="guarda">O Rui é da velha <marker>escola</marker>.</example>
     </rule>
+
+
     <rulegroup id="PORTUGUESE_ADDRESSES" name="[pt-PT] Formato de endereços em Portugal" type="style" tone_tags="formal">
         <!--  Localized from French, by Tiago F. Santos, 2017-10-01      -->
         <rule>
@@ -1240,7 +1249,7 @@ USA
 </rulegroup>
 
 
-    <rulegroup id='COLOQUIALISMOS_PT_PT' name="[pt-PT][Formal] Coloquialismos: evitar expressões orais" default="on" tone_tags="formal">
+    <rulegroup id='COLOQUIALISMOS_PT_PT' name="[pt-PT][Formal] Coloquialismos: evitar expressões orais" default='on' tone_tags='formal'>
 
         <rule>
             <pattern>
@@ -2088,7 +2097,7 @@ USA
         <short>Coloquialismo</short>
         <example correction=''>Vai <marker>dar uma volta ao bilhar grande</marker>.</example>
     </rule>
-   <rule> <!-- Used ChatGPT 4o for enhancements and extra accuracy -->
+    <rule> <!-- Used ChatGPT 4o for enhancements and extra accuracy -->
         <pattern>
             <token>de</token>
             <token>um</token>
@@ -2105,8 +2114,38 @@ USA
         <short>Coloquialismo</short>
         <example correction='rapidamente|subitamente|repentinamente|num curto intervalo de tempo'>A Ana fê-lo <marker>de um dia para o outro</marker>.</example>
     </rule>
+    <rule id='FAZER_CONTAS_À_VIDA'>
+        <pattern>
+            <token inflected='yes'>fazer</token>
+            <token>contas</token>
+            <token>à</token>
+            <token>vida</token>
+        </pattern>
+        <message>&colloquialism_msg;</message>
+        <suggestion>saber com o que se pode contar</suggestion>
+        <suggestion>determinar com o que se pode contar</suggestion>
+        <suggestion>apurar os meios disponíveis</suggestion>
+        <suggestion>estabelecer as condições disponíveis</suggestion>
+        <short>Coloquialismo</short>
+        <example correction='saber com o que se pode contar|determinar com o que se pode contar|apurar os meios disponíveis|estabelecer as condições disponíveis'>Preciso de <marker>fazer contas à vida</marker>.</example>
+        <example>Ele pretende saber com o que se pode contar.</example>
+    </rule>
+    <rule id='ÀS_TRÊS_PANCADAS'>
+        <pattern>
+            <token>às</token>
+            <token regexp='yes'>3|três</token>
+            <token>pancadas</token>
+        </pattern>
+        <message>&colloquialism_msg;</message>
+        <suggestion>com incorreções</suggestion>
+        <suggestion>de modo inadequado</suggestion>
+        <suggestion>com deficiências</suggestion>
+        <suggestion>sem o devido rigor</suggestion>
+        <short>Coloquialismo</short>
+        <example correction='com incorreções|de modo inadequado|com deficiências|sem o devido rigor'>Isso foi feito <marker>às três pancadas</marker>.</example>
+        <example>Aquilo foi tudo feito sem o devido rigor.</example>
+    </rule>
     </rulegroup>
-
 
 
         <rulegroup id='GASTAR_DESPENDER_DESEMBOLSAR' name='[pt-PT][Formal] gastar → despender/desembolsar' tone_tags='formal' is_goal_specific='true'>
@@ -2136,7 +2175,11 @@ USA
                 <suggestion><match no='1' postag='VM[^P].+' postag_regexp='yes'>despender</match></suggestion>
                 <suggestion><match no='1' postag='VM[^P].+' postag_regexp='yes'>desembolsar</match></suggestion>
                 <example correction="despendeu|desembolsou">A Ana <marker>gastou</marker> demasiado dinheiro no supermercado.</example>
+<!--
+
+FIX THIS RULE WITH THE NEW DISAMBIGUATOR FIX 2025-09-30!!!!
                 <example correction="despende|desembolsa">Ela <marker>gasta</marker> bastante dinheiro em livros.</example>
+-->
                 <example>A empresa tinha gasto mil milhões de euros nessas compras.</example>
                 <example>Queria não ter gastado tanto dinheiro.</example>
                 <example>Tenho gastado muito dinheiro em minha casa.</example>
@@ -2199,6 +2242,54 @@ USA
         </rule>
 
 
+        <rule id='CHUMBAR_REPROVAR_PT_PT' name="[pt-PT][Formal] Chumbar → reprovar" type='style' tone_tags='formal' tags='picky'>
+            <antipattern>
+                <token skip='2' regexp='yes'>chumbos?</token>
+                <token regexp='yes' case_sensitive='yes'>Pb|pb|PB</token>
+                <example>Os símbolos de elementos químicos, como ouro (Au), chumbo (Pb) e potássio (K), derivam de seus nomes em latim.</example>
+            </antipattern>
+            <antipattern>
+                <token skip='2' inflected='yes'>chumbar</token>
+                <token regexp='yes' inflected='yes'>buraco|cano|carro|cimento|concreto|dente|estrutura|legislação|lei|obra|orçamento|parede|proposta|tinta</token>
+                <example>O toquinho de madeira chumbado na parede.</example>
+                <example>O Partido Socialista não deixou que isso acontecesse, tendo chumbado a nossa proposta.</example>
+            </antipattern>
+            <antipattern>
+                <token skip='1' postag_regexp='yes' postag='V.+|SPS00'/>
+                <token regexp='yes'>chumbos?</token>
+                <example>Que ia colocar chumbo na raquete?</example>
+                <example>Quando meu pai me chama para conversar, aí vem chumbo grosso.</example>
+                <example>Isto pesa como chumbo.</example>
+                <example>Minhas pernas pesavam como chumbo.</example>
+                <example>Estas baterias contêm chumbo.</example>
+                <example>É possível que a água encanada contenha cloro, chumbo, ou outros poluentes que tais.</example>
+                <example>A arma foi definida apenas para cartuchos de espingarda calibre 12 e apenas para chumbo.</example>
+            </antipattern>
+            <antipattern>
+                <token postag_regexp='yes' postag='N.+|AQ.+|PI.+'><exception postag_regexp='yes' postag='V.+'/></token>
+                <token min='0' max='2' postag_regexp='yes' postag='CC|_PUNCT|DA.+|SPS.+'/>
+                <token regexp='yes'>chumbos?</token>
+                <example>O elemento chumbo, quando exposto diretamente ao bico de Bunsen, confere à chama uma coloração branco-azulada.</example>
+                <example>Minhas pernas estão tão pesadas quanto o chumbo.</example>
+                <example>O queijo é ouro de manhã, prata ao meio-dia e chumbo à noite.</example>
+                <example>Ninguém pode conhecê-los, nenhum caçador pode atirar neles com pólvora ou chumbo - Os pensamentos são livres!</example>
+                <example>Qual é o mais pesado, o chumbo ou o ouro?</example>
+                <example>Na mão dele, chumbo se transformava em ouro.</example>
+            </antipattern>
+            <pattern>
+                <marker>
+                    <token inflected='yes'>chumbar<exception scope='next' regexp='yes' inflected='yes'>grosso</exception></token>
+                </marker>
+            </pattern>
+            <message>Num contexto formal, empregue o verbo &quot;reprovar&quot;.</message>
+            <suggestion><match no='1' postag='V.+' postag_regexp='yes'>reprovar</match></suggestion>
+            <example correction="reprova">Ele <marker>chumba</marker> a matemática.</example>
+            <example correction="reprovou">O Rui <marker>chumbou</marker> no exame de português.</example>
+            <example>Elas reprovaram no exame nacional.</example>
+            <example>Os bandidos levaram com chumbo grosso.</example>
+        </rule>
+
+
     <rule id='PÔR_FIM_TERMO' name="[pt-PT][Formal] pôr 'fim' → 'termo/término'" tags="picky" tone_tags="formal">
         <pattern>
             <token skip='4' inflected='yes'>pôr</token>
@@ -2242,11 +2333,12 @@ USA
         <antipattern>
             <token postag_regexp='yes' postag='_PUNCT|SENT_START'/>
             <token postag_regexp='yes' postag='DA.+'/>
-            <token skip='-1' postag_regexp='yes' postag='N.+|AQ.+'><exception scope='next' postag_regexp='yes' postag='DP.+'/></token>
+            <token skip='-1' postag_regexp='yes' postag='N.+|AQ.+|UNKNOWN'><exception scope='next' postag_regexp='yes' postag='DP.+'/></token>
             <token postag_regexp='yes' postag='(VMIP3S0|VMM02S0):PP1CSO00'/>
             <example>O TENENTE SACOGNE diz-me que pediu passagem para a reserva, para onde vai no posto de MAJOR.</example>
             <example>A pele das serpentes repugna-me.</example>
             <example>A Ana repugna-me.</example>
+            <example>A USF altera-me a consulta de véspera.</example>
         </antipattern>
 
         <!-- ChatGPT 4o: "All these verbs are related to absence, need, or lack and are, therefore, exceptions to the proposed rule." -->
@@ -3113,7 +3205,7 @@ USA
         <pattern>
             <token regexp='yes'>vocês?</token>
         </pattern>
-        <message>O uso explícito do pronome "você" pode ser interpretado como desrespeitoso. Considere remover o pronome ou substituí-lo pelo pronome de tratamento adequado.</message>
+        <message>&quot;Você&quot; pode soar desrespeitoso. Substitua-o por um pronome de tratamento adequado ou remova-o.</message>
         <suggestion>o Senhor</suggestion>
         <suggestion>a Senhora</suggestion>
         <suggestion>o Excelentíssimo</suggestion>
@@ -4518,7 +4610,7 @@ USA
         <rule> <!-- #1 -->
             <pattern>
                 <token postag='V.+' postag_regexp='yes'>
-                    <exception postag_regexp='yes' postag='AQ.+|NC.+|VMP00.+'/>
+                    <exception postag_regexp='yes' postag='AQ.+|NC.+|VMP00.+|V.+:.+'/>
                     <exception scope='previous' regexp='yes'>&pronomes_obliquos_sem_a_as_o_os;</exception>
                     <exception scope='previous' postag_regexp='yes' postag='CS|RN'/> <!-- Added RN - 2022-09-20 -->
                     <exception regexp='no' inflected="yes">assistir</exception>
@@ -4542,7 +4634,7 @@ USA
     <rule> <!-- #2 -->
         <pattern>
             <token postag='VMP00.+' postag_regexp='yes'>
-                <exception postag_regexp='yes' postag='AQ.+|NC.+'/>
+                <exception postag_regexp='yes' postag='AQ.+|NC.+|V.+:.+'/>
                 <exception scope='previous' regexp='yes'>&pronomes_obliquos_sem_a_as_o_os;</exception>
                 <exception scope='previous' postag_regexp='yes' postag='CS|RN'/> <!-- Added RN - 2022-09-20 -->
                 <exception regexp='no' inflected="yes">assistir</exception>
@@ -4564,7 +4656,7 @@ USA
     <pattern>
         <token postag='RN' postag_regexp='no'/>
         <token postag='V.+' postag_regexp='yes'>
-            <exception postag_regexp='yes' postag='AQ.+|NC.+|VMP00.+'/>
+            <exception postag_regexp='yes' postag='AQ.+|NC.+|VMP00.+|V.+:.+'/>
             <exception scope='previous' regexp='yes'>&pronomes_obliquos_sem_a_as_o_os;</exception>
             <exception regexp='no' inflected="yes">assistir</exception>
         </token>
@@ -4584,7 +4676,7 @@ USA
                     <token postag='RN' postag_regexp='no'/>
                     <token postag='V.+' postag_regexp='yes'/>
                     <token postag='VMP00.+' postag_regexp='yes'>
-                        <exception postag_regexp='yes' postag='AQ.+|NC.+'/>
+                        <exception postag_regexp='yes' postag='AQ.+|NC.+|V.+:.+'/>
                         <exception scope='previous' regexp='yes'>&pronomes_obliquos_sem_a_as_o_os;</exception>
                         <exception regexp='no' inflected="yes">assistir</exception>
                     </token>

@@ -8843,6 +8843,8 @@ Leidbilder/N
 Einname/N
 Hauptsacke/N
 Atomaffe/N
+Besenstil/S
+Besenstile/N
 Spulgang/S
 Schwerstern
 .*schwerstern
@@ -8856,6 +8858,7 @@ Buklee/S
 Busuki/S
 Dekollettee/S
 Dränage/N
+Patenkirchen/S
 Dublee/S
 Frappee/S
 Frigidär/S
@@ -8873,12 +8876,25 @@ Schweinwerfer.*
 Lymphdränage/N
 photogen/A
 Polizeit
+Verhaltenssegel/N
 Kranenkasse/N
 Durstlöcher/N
 Polonäse/N
 Pralinee/N
 Sorbett/S
+Konsensmilch.*
+Konsenswasser.*
+Warenkorn/S
+Warenkornes
+Außenriss
+Aussenriss
+Innenriss
 Soufflee/S
+Überflieder/NS
+Heißlust.*
 Überganglösung
+Blockhain/S
 Elementarschjudenversicherung #strange suggestion
+.*ministein   # statt ...ministerin
 .*farbend/A
+Rückstrände/N

@@ -1,6 +1,6 @@
-/* LanguageTool, a natural language style checker 
+/* LanguageTool, a natural language style checker
  * Copyright (C) 2005 Daniel Naber (http://www.danielnaber.de)
- * 
+ *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
@@ -59,7 +59,7 @@ import static java.util.regex.Pattern.*;
  * are detected at runtime by searching the classpath for files named
  * {@code META-INF/org/languagetool/language-module.properties}. Those file(s)
  * need to contain a key {@code languageClasses} which specifies the fully qualified
- * class name(s), e.g. {@code org.languagetool.language.English}. Use commas to specify 
+ * class name(s), e.g. {@code org.languagetool.language.English}. Use commas to specify
  * more than one class.
  *
  * <p>Sub classes should typically use lazy init for anything that's costly to set up.
@@ -90,17 +90,21 @@ public abstract class Language {
   private static final Pattern TYPOGRAPHY_PATTERN_4 = compile("([ \\(])\"");
   private static final Pattern TYPOGRAPHY_PATTERN_5 = compile("\"([\\u202f\\u00a0 !\\?,\\.;:\\)])");
 
+  private final Object patternRuleLock = new Object();
+  private final Object disambiguatorLock = new Object();
+  private final Object sentenceTokenizerLock = new Object();
+  private final Object wordTokenizerLock = new Object();
+
   private final UnifierConfiguration unifierConfig = new UnifierConfiguration();
   private final UnifierConfiguration disambiguationUnifierConfig = new UnifierConfiguration();
 
   private final Pattern ignoredCharactersRegex = compile("[\u00AD]");  // soft hyphen
-  
-  private List<AbstractPatternRule> patternRules;
 
-  private Disambiguator disambiguator;
+  private volatile List<AbstractPatternRule> patternRules;
+  private volatile Disambiguator disambiguator;
   private Tagger tagger;
-  private SentenceTokenizer sentenceTokenizer;
-  private Tokenizer wordTokenizer;
+  private volatile SentenceTokenizer sentenceTokenizer;
+  private volatile Tokenizer wordTokenizer;
   private Chunker chunker;
   private Chunker postDisambiguationChunker;
   private Synthesizer synthesizer;
@@ -153,9 +157,9 @@ public abstract class Language {
    * @since 4.5
    */
   public String getCommonWordsPath() {
-    return getShortCode() + "/common_words.txt";     
+    return getShortCode() + "/common_words.txt";
   }
-  
+
   /**
    * Get this language's variant, e.g. <code>valencia</code> (as in <code>ca-ES-valencia</code>)
    * or <code>null</code>.
@@ -167,10 +171,10 @@ public abstract class Language {
   public String getVariant() {
     return null;
   }
-  
+
   /**
-   * Get enabled rules different from the default ones for this language variant. 
-   * 
+   * Get enabled rules different from the default ones for this language variant.
+   *
    * @return enabled rules for the language variant.
    * @since 2.4
    */
@@ -179,8 +183,8 @@ public abstract class Language {
   }
 
   /**
-   * Get disabled rules different from the default ones for this language variant. 
-   * 
+   * Get disabled rules different from the default ones for this language variant.
+   *
    * @return disabled rules for the language variant.
    * @since 2.4
    */
@@ -233,24 +237,6 @@ public abstract class Language {
       .filter(config -> config.getRuleId().startsWith("TEST"))
       .map(c -> new TestRemoteRule(this, c))
       .forEach(rules::add);
-    rules.removeIf(rule -> {
-      String activeRemoteRuleAbTest = ((RemoteRule) rule).getServiceConfiguration().getOptions().get("abtest"); //abtest option value must match the abtest value from server.properties
-      // allow disabling based on A/B test flags to compare multiple models
-      String excludeABTest = ((RemoteRule) rule).getServiceConfiguration().getOptions().get("excludeABTest");
-      List<String> activeAbTestsForUser = userConfig.getAbTest();
-      if (excludeABTest != null && activeAbTestsForUser != null &&
-        activeAbTestsForUser.stream().anyMatch(flag -> flag.matches(excludeABTest))) {
-        return true;
-      }
-      if (activeRemoteRuleAbTest != null && !activeRemoteRuleAbTest.trim().isEmpty()) { // A/B-Test active for remote rule
-        if (activeAbTestsForUser == null) {
-          return true; // No A/B-Tests are not active for user
-        }
-        return !activeAbTestsForUser.contains(activeRemoteRuleAbTest); // A/B-Test an active remote rule A/B-Test is active for this user
-      } else {
-        return false; // No A/B-Test active for remote rule
-      }
-    });
     return rules;
   }
 
@@ -395,9 +381,13 @@ public abstract class Language {
   /**
    * Get this language's part-of-speech disambiguator implementation.
    */
-  public synchronized Disambiguator getDisambiguator() {
+  public Disambiguator getDisambiguator() {
     if (disambiguator == null) {
-      disambiguator = createDefaultDisambiguator();
+      synchronized (disambiguatorLock) {
+        if (disambiguator == null) {
+          disambiguator = createDefaultDisambiguator();
+        }
+      }
     }
 
     return disambiguator;
@@ -449,9 +439,13 @@ public abstract class Language {
   /**
    * Get this language's sentence tokenizer implementation.
    */
-  public synchronized SentenceTokenizer getSentenceTokenizer() {
+  public SentenceTokenizer getSentenceTokenizer() {
     if (sentenceTokenizer == null) {
-      sentenceTokenizer = createDefaultSentenceTokenizer();
+      synchronized (sentenceTokenizerLock) {
+        if (sentenceTokenizer == null) {
+          sentenceTokenizer = createDefaultSentenceTokenizer();
+        }
+      }
     }
     return sentenceTokenizer;
   }
@@ -474,9 +468,13 @@ public abstract class Language {
   /**
    * Get this language's word tokenizer implementation.
    */
-  public synchronized Tokenizer getWordTokenizer() {
+  public Tokenizer getWordTokenizer() {
     if (wordTokenizer == null) {
-      wordTokenizer = createDefaultWordTokenizer();
+      synchronized (wordTokenizerLock) {
+        if (wordTokenizer == null) {
+          wordTokenizer = createDefaultWordTokenizer();
+        }
+      }
     }
     return wordTokenizer;
   }
@@ -595,7 +593,7 @@ public abstract class Language {
   public Unifier getUnifier() {
     return unifierConfig.createUnifier();
   }
-  
+
   /**
    * Get this language's feature unifier used for disambiguation.
    * Note: it might be different from the normal rule unifier.
@@ -618,7 +616,7 @@ public abstract class Language {
   public UnifierConfiguration getDisambiguationUnifierConfiguration() {
     return disambiguationUnifierConfig;
   }
-  
+
   /**
    * Get the name of the language translated to the current locale,
    * if available. Otherwise, get the untranslated name.
@@ -634,7 +632,7 @@ public abstract class Language {
       }
     }
   }
-  
+
   /**
    * Get the short name of the language with country and variant (if any), if it is
    * a single-country language. For generic language classes, get only a two- or
@@ -662,48 +660,56 @@ public abstract class Language {
     }
     return name;
   }
-  
+
   /**
    * Get the pattern rules as defined in the files returned by {@link #getRuleFileNames()}.
    * @since 2.7
    */
   @SuppressWarnings("resource")
-  protected synchronized List<AbstractPatternRule> getPatternRules() throws IOException {
+  protected List<AbstractPatternRule> getPatternRules() throws IOException {
     // use lazy loading to speed up server use case and start of stand-alone LT, where all the languages get initialized:
     if (patternRules == null) {
-      List<AbstractPatternRule> rules = new ArrayList<>();
-      PatternRuleLoader ruleLoader = new PatternRuleLoader();
-      for (String fileName : getRuleFileNames()) {
-        InputStream is = null;
-        try {
-          is = JLanguageTool.getDataBroker().getAsStream(fileName);
-          boolean ignore = false;
-          if (is == null) {                     // files loaded via the dialog
-            try {
-              is = new FileInputStream(fileName);
-            } catch (FileNotFoundException e) {
-              if (fileName.contains("-test-")) {
-                // ignore, used for testing
-                ignore = true;
-              } else {
-                throw e;
-              }
-            }
-          }
-          if (!ignore) {
-            rules.addAll(ruleLoader.getRules(is, fileName, this));
-            patternRules = Collections.unmodifiableList(rules);
-          }
-        } finally {
-          if (is != null) {
-            is.close();
-          }
+      synchronized (patternRuleLock) {
+        if (patternRules == null) {
+          patternRules = initializePatternRules();
         }
       }
     }
     return patternRules;
   }
-  
+
+  private List<AbstractPatternRule> initializePatternRules() throws IOException {
+    List<AbstractPatternRule> rules = new ArrayList<>();
+    PatternRuleLoader ruleLoader = new PatternRuleLoader();
+    for (String fileName : getRuleFileNames()) {
+      InputStream is = null;
+      try {
+        is = JLanguageTool.getDataBroker().getAsStream(fileName);
+        boolean ignore = false;
+        if (is == null) {                     // files loaded via the dialog
+          try {
+            is = new FileInputStream(fileName);
+          } catch (FileNotFoundException e) {
+            if (fileName.contains("-test-")) {
+              // ignore, used for testing
+              ignore = true;
+            } else {
+              throw e;
+            }
+          }
+        }
+        if (!ignore) {
+          rules.addAll(ruleLoader.getRules(is, fileName, this));
+        }
+      } finally {
+        if (is != null) {
+          is.close();
+        }
+      }
+    }
+    return Collections.unmodifiableList(rules);
+  }
+
   @Override
   public final String toString() {
     return getName();
@@ -783,9 +789,9 @@ public abstract class Language {
   public LanguageMaintainedState getMaintainedState() {
     return LanguageMaintainedState.LookingForNewMaintainer;
   }
-  
+
   /*
-   * True if language should be hidden on GUI (i.e. en, de, pt, 
+   * True if language should be hidden on GUI (i.e. en, de, pt,
    * instead of en-US, de-DE, pt-PT)
    * @since 3.3
    */
@@ -799,7 +805,7 @@ public abstract class Language {
     }
     return false;
   }
-  
+
   /**
    * Returns a priority for Rule or Category Id (default: 0).
    * Positive integers have higher priority.
@@ -818,7 +824,7 @@ public abstract class Language {
     }
     return 0;
   }
-  
+
   /**
    * Returns a priority for Rule (default: 0).
    * Positive integers have higher priority.
@@ -872,7 +878,7 @@ public abstract class Language {
   public String getClosingDoubleQuote() {
     return "\"";
   }
-  
+
   /** @since 5.1 */
   public String getOpeningSingleQuote() {
     return "'";
@@ -882,12 +888,12 @@ public abstract class Language {
   public String getClosingSingleQuote() {
     return "'";
   }
-  
+
   /** @since 5.1 */
   public boolean isAdvancedTypographyEnabled() {
     return false;
   }
-  
+
   /** @since 5.1 */
   public String toAdvancedTypography(String input) {
     if (!isAdvancedTypographyEnabled()) {
@@ -895,10 +901,10 @@ public abstract class Language {
         .replace(SUGGESTION_CLOSE_TAG, getClosingDoubleQuote());
     }
     String output = input;
-   
+
     //Preserve content inside <suggestion></suggestion>
     List<String> preservedStrings = new ArrayList<>();
-    int countPreserved = 0; 
+    int countPreserved = 0;
     Matcher m = INSIDE_SUGGESTION.matcher(output);
     int offset = 0;
     while (m.find(offset)) {
@@ -908,39 +914,39 @@ public abstract class Language {
       countPreserved++;
       offset = m.end();
     }
-    
+
     // Ellipsis (for all languages?)
     output = output.replace("...", "…");
-    
+
     // non-breaking space
     output = NBSPACE1.matcher(output).replaceAll("$1\u00a0$2");
     output = NBSPACE2.matcher(output).replaceAll("$1\u00a0");
-    
+
     Matcher matcher = APOSTROPHE.matcher(output);
     output = matcher.replaceAll("$1’$2");
-    
+
     // single quotes
-    if (output.startsWith("'")) { 
+    if (output.startsWith("'")) {
       output = getOpeningSingleQuote() + output.substring(1);
     }
-    if (output.endsWith("'")) { 
+    if (output.endsWith("'")) {
       output = output.substring(0, output.length() - 1 ) + getClosingSingleQuote();
     }
     output = QUOTED_CHAR_PATTERN.matcher(output).replaceAll(" " + getOpeningSingleQuote() + "$1" + getClosingSingleQuote()); //exception single character
     output = TYPOGRAPHY_PATTERN_1.matcher(output).replaceAll("$1" + getOpeningSingleQuote());
     output = TYPOGRAPHY_PATTERN_2.matcher(output).replaceAll(getClosingSingleQuote() + "$1");
     output = TYPOGRAPHY_PATTERN_3.matcher(output).replaceAll("’s$1"); // exception genitive
-    
+
     // double quotes
-    if (output.startsWith("\"")) { 
+    if (output.startsWith("\"")) {
       output = getOpeningDoubleQuote() + output.substring(1);
     }
-    if (output.endsWith("\"")) { 
+    if (output.endsWith("\"")) {
       output = output.substring(0, output.length() - 1 ) + getClosingDoubleQuote();
     }
     output = TYPOGRAPHY_PATTERN_4.matcher(output).replaceAll("$1" + getOpeningDoubleQuote());
     output = TYPOGRAPHY_PATTERN_5.matcher(output).replaceAll(getClosingDoubleQuote() + "$1");
-    
+
     //restore suggestions
     for (int i = 0; i < preservedStrings.size(); i++) {
       output = StringUtils.replaceOnce(output, "\\" + i, getOpeningDoubleQuote() + preservedStrings.get(i) + getClosingDoubleQuote() );
@@ -965,20 +971,20 @@ public abstract class Language {
   public int hashCode() {
     return getShortCodeWithCountryAndVariant().hashCode();
   }
-  
+
   /**
-   * @since 5.1 
-   * Some rules contain the field min_matches to check repeated patterns 
+   * @since 5.1
+   * Some rules contain the field min_matches to check repeated patterns
    */
   public boolean hasMinMatchesRules() {
     return false;
   }
 
   /**
-   * @since 6.0 
-   * Adjust suggestion 
+   * @since 6.0
+   * Adjust suggestion
    */
-  public String adaptSuggestion(String s) {
+  public String adaptSuggestion(String s, String originalErrorStr) {
     return s;
   }
 

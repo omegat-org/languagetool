@@ -3442,6 +3442,8 @@ Pimentón de La Vera	NNP
 Pinal County	NNP
 pis aller	NN
 Pittsburgh Steelers	NNP
+Dmitry Peskov	NNP
+Habemus papam	UH
 PIXIA Corp	NNP
 Pizza Hut	NNP
 pièce de résistance	NN
@@ -3873,6 +3875,10 @@ Universal Music	NNP
 Universal Music Group	NNP
 Universal Pictures	NNP
 Universal Studios	NNP
+Samwer brothers	_multiword_
+Wetterstein Mountains	NNPS
+polka dot	NN
+polka dots	NNS
 unkindnesses of ravens	NNS
 Unreal Engine	NNP
 Unreal Tournament	NNP
@@ -8154,11 +8160,16 @@ José Sarria	NNP
 Les Cahiers	NNPS
 Les cahiers	NNPS
 Les Pauls	NNPS
+Lake Texcoco	NNP
 Luciano Martino	NNP
 Manuel Robles	NNP
 Marcus Dupree	NNP
 Mario Minniti	NNP
 Mark Mulder	NNP
+seconda pratica	NN:U
+seconda prattica	NN:U
+prima pratica	NN:U
+prima prattica	NN:U
 Mark Shulman	NNP
 Martin Bucer	NNP
 Max Rager	NNP
@@ -8189,3 +8200,9 @@ Aba County	NNP
 Aba River	NNP
 CIT Group	NNP
 Cris Carter	NNP
+Dušan Makavejev	NNP
+Dred Scott	NNP
+Grigory Margulis	NNP
+Vladimir Drinfeld	NNP
+Maryna Viazovska	NNP
+Ahmed al-Sharaa	NNP

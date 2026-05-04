@@ -6,7 +6,7 @@
 
     <groupId>org.languagetool</groupId>
     <artifactId>languagetool-parent</artifactId>
-    <version>6.6</version>
+    <version>6.7</version>
     <packaging>pom</packaging>
     <name>LanguageTool</name>
     <description>A style and grammar checker for many languages</description>
@@ -110,7 +110,7 @@
     </repositories>
 
     <properties>
-        <revision>6.6</revision>
+        <revision>6.7</revision>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -131,7 +131,7 @@
         <!-- grpc related plugins check for updates if grpc is updated -->
         <kr.motd.maven.os-maven-plugin.version>1.7.1</kr.motd.maven.os-maven-plugin.version>
         <protobuf-maven-plugin.version>0.6.1</protobuf-maven-plugin.version>
-        <dependency-check-maven.pluging.version>12.1.0</dependency-check-maven.pluging.version>
+        <dependency-check-maven.pluging.version>12.1.6</dependency-check-maven.pluging.version>
         <flatten.version>1.6.0</flatten.version>
         <sortpom-maven.plugin.version>3.2.1</sortpom-maven.plugin.version>
         <!-- Dependency Versions -->
@@ -148,7 +148,7 @@
         <org.apache.commons.commons-compress.version>1.27.1</org.apache.commons.commons-compress.version>
         <!-- No update available TODO: Check for replacement-->
         <edu.washington.cs.knowitall.opennlp.version>1.5</edu.washington.cs.knowitall.opennlp.version>
-        <io.grpc.version>1.68.0</io.grpc.version>
+        <io.grpc.version>1.75.0</io.grpc.version>
         <protoc.version>3.25.5</protoc.version>
         <!-- TODO check for update see server  & dev -->
         <!-- Updated from 2.2.3 -->
@@ -163,10 +163,10 @@
         <com.carrotsearch.hppc.version>0.8.2</com.carrotsearch.hppc.version>
         <com.gitlab.dumonts.hunspell.version>2.1.2</com.gitlab.dumonts.hunspell.version>
         <com.github.lucene-gosen.version>6.2.1</com.github.lucene-gosen.version>
-        <com.google.protobuf.version>3.25.5</com.google.protobuf.version>
+        <com.google.protobuf.version>3.25.8</com.google.protobuf.version>
         <com.hankcs.aho-corasick-double-array-trie.version>1.2.2</com.hankcs.aho-corasick-double-array-trie.version>
         <com.hankcs.hanlp.version>portable-1.8.2</com.hankcs.hanlp.version>
-        <com.ibm.icu.version>75.1</com.ibm.icu.version>
+        <com.ibm.icu.version>77.1</com.ibm.icu.version>
 
         <commons-cli.version>1.9.0</commons-cli.version>
         <commons-codec.version>1.17.1</commons-codec.version>
@@ -184,7 +184,7 @@
         <io.micrometer.micrometer-prometheus.version>1.7.12</io.micrometer.micrometer-prometheus.version>
         <io.opentelemetry.version>1.42.1</io.opentelemetry.version>
         <io.opentelemetry.semconv.version>1.30.1-alpha</io.opentelemetry.semconv.version>
-        <io.lettuce.version>6.5.4.RELEASE</io.lettuce.version>
+        <io.lettuce.version>6.8.1.RELEASE</io.lettuce.version>
 
         <javax.activation.javax.activation-api.version>1.2.0</javax.activation.javax.activation-api.version>
         <javax.annotation.javax.annotation-api.version>1.3.2</javax.annotation.javax.annotation-api.version>
@@ -197,7 +197,7 @@
         <org.apache.commons.commons-collections4.version>4.4</org.apache.commons.commons-collections4.version>
         <org.apache.commons.commons-csv.version>1.12.0</org.apache.commons.commons-csv.version>
         <org.apache.commons.commons-pool2.version>2.12.0</org.apache.commons.commons-pool2.version>
-        <org.apache.commons.lang3.version>3.17.0</org.apache.commons.lang3.version>
+        <org.apache.commons.lang3.version>3.18.0</org.apache.commons.lang3.version>
         <org.apache.commons.text.version>1.12.0</org.apache.commons.text.version>
         <org.apache.opennlp.opennlp-tools.version>1.9.4</org.apache.opennlp.opennlp-tools.version>
 
@@ -209,7 +209,7 @@
         <org.mybatis.version>3.5.16</org.mybatis.version>
         <org.openoffice.version>4.1.2</org.openoffice.version>
         <org.slf4j.version>2.0.16</org.slf4j.version>
-        <org.softcatala.catalan-pos-dict.version>2.26</org.softcatala.catalan-pos-dict.version>
+        <org.softcatala.catalan-pos-dict.version>2.27</org.softcatala.catalan-pos-dict.version>
         <org.languagetool.asturian-pos-dict.version>0.1</org.languagetool.asturian-pos-dict.version>
         <org.tukaani.version>1.10</org.tukaani.version>
 
@@ -220,7 +220,7 @@
         <morfologik.version>2.1.9</morfologik.version>
         <optimaize.languagedetector.language-detector.version>0.6</optimaize.languagedetector.language-detector.version>
         <!-- see https://github.com/languagetool-org/languagetool/issues/4088 before you upgrade this -->
-        <spanish-pos-dict.version>2.3</spanish-pos-dict.version>
+        <spanish-pos-dict.version>2.5</spanish-pos-dict.version>
         <french-pos-dict.version>0.7</french-pos-dict.version>
         <languagetool-ga-dicts.version>0.02</languagetool-ga-dicts.version>
         <portuguese-pos-dict.version>1.2.0</portuguese-pos-dict.version>
@@ -752,213 +752,213 @@
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-all</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-ar</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-ast</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-be</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-br</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-ca</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-da</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-de</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-de-DE-x-simple-language</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-el</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-en</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-eo</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-es</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-fa</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-fr</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-ga</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-gl</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-it</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-ja</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-km</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-nl</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-pl</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-pt</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-ro</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-ru</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-sk</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-sl</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-sv</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-ta</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-tl</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-uk</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-zh</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>language-crh</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>languagetool-commandline</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <!-- Start LT-Dependencies -->
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>languagetool-core</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>languagetool-dev</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>languagetool-gui-commons</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>languagetool-http-client</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>languagetool-server</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>languagetool-standalone</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>languagetool-tools</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>languagetool-wikipedia</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
             </dependency>
             <dependency>
                 <groupId>org.languagetool</groupId>
@@ -1209,7 +1209,7 @@
             <dependency>
                 <groupId>org.languagetool</groupId>
                 <artifactId>languagetool-core</artifactId>
-                <version>6.6</version>
+                <version>6.7</version>
                 <type>test-jar</type>
                 <scope>test</scope>
             </dependency>
@@ -1378,6 +1378,7 @@
                     <suppressionFiles>
                         <suppressionFile>owasp_fp.xml</suppressionFile>
                     </suppressionFiles>
+                    <ossindexAnalyzerEnabled>false</ossindexAnalyzerEnabled>
                 </configuration>
             </plugin>
             <plugin>
@@ -1419,24 +1420,35 @@
         </plugins>
     </build>
     <profiles>
-        <!-- taken from https://docs.sonatype.org/display/Repository/How+To+Generate+PGP+Signatures+With+Maven -->
-        <!--TODO: Is this needed anymore? Or is maybe an update possible -->
         <profile>
-            <id>release-sign-artifacts</id>
-            <activation>
-                <property>
-                    <name>performRelease</name>
-                    <value>true</value>
-                </property>
-            </activation>
+            <id>sign-and-release</id>
             <build>
                 <plugins>
                     <plugin>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.6</version>
-                        <configuration>
-                            <useAgent>true</useAgent>
-                        </configuration>
+                        <version>3.2.8</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
@@ -1446,6 +1458,15 @@
                                 <phase>verify</phase>
                             </execution>
                         </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <version>0.9.0</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <publishingServerId>central</publishingServerId>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>

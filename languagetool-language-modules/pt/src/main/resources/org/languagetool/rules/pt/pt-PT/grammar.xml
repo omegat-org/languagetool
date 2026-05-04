@@ -867,14 +867,38 @@ USA
           <token regexp='yes'>residentes?|morad(?:as?|or(?:es)?)</token>
           <token postag_regexp='yes' postag='A.+'/>
       </antipattern>
-      <!-- MARCOAGPINTO 2020-10-06 + 2020-10-27 (21-OCT-2020+) *START* -->
-      <!-- "No núcleo reside a força imprescindível dos modelos." -->
       <antipattern>
-          <token regexp="yes">residem?</token>
-          <token regexp="yes">as?|os?|um|uns|umas?</token>
-          <token postag='NC[CFM][SP]000|AQ0[CFM][SP]0' postag_regexp='yes'/>
+          <token regexp='yes'>moram?|residem?</token>
+          <token postag='(SPS00:)?[DP].+' postag_regexp='yes'/>
+          <token postag='N.+|AQ.+' postag_regexp='yes'/>
+          <example>No núcleo reside a força imprescindível dos modelos.</example>
+          <example>Em que tipo de casa mora o Tom?</example>
+          <example>É aqui que mora o senhor Pedro?</example>
+          <example>Onde mora seu sogro? - Na casa que está situada junto da casa do meu cunhado.</example>
+          <example>Ele mora um andar acima do meu.</example>
+          <example>Vocês devem ter errado de endereço. Aqui não mora nenhum Wagner.</example>
+          <example>Onde mora teu avô?</example>
+          <example>Dentro de todos os adultos mora o desejo secreto de voltar à infância.</example>
+          <example>Onde moram tuas filhas?</example>
       </antipattern>
-      <!-- MARCOAGPINTO 2020-10-06 + 2020-10-27 (21-OCT-2020+) *END* -->
+      <antipattern>
+          <token regexp='yes'>residentes?|moradora?|morador[ae]s</token>
+          <token regexp='yes'>loca(l|is)</token>
+          <example>Circulam histórias entre os moradores locais sobre a faculdade.</example>
+          <example>Alguns moradores locais não quiseram comentar.</example>
+          <example>As taxas de admissão são reduzidas para os residentes locais durante o inverno.</example>
+      </antipattern>
+      <antipattern>
+          <token regexp='yes'>residentes?|moradora?|morador[ae]s</token>
+          <token postag='SPS.+|NP..[^G].+' postag_regexp='yes'/>
+          <example>Hoje, para evitar reação hostil de moradores contra os guardas, a Polícia Civil contou com o apoio da PM.</example>
+          <example>O prefeito Rafael Greca (PMN) relatou uma série de reclamações de moradores contra o mau comportamento dos invasores.</example>
+          <example>Eles viajam para Burkittsville, Maryland (anteriormente Blair) e entrevistam os moradores sobre a lenda da Bruxa de Blair.</example>
+          <example>O prefeito Rafael Greca (PMN) relatou uma série de reclamações de moradores contra o mau comportamento dos invasores.</example>
+          <example>O morador Henrique Gonçalves, 35, destacou que a maior preocupação, é que diante do período chuvoso esses locais estão...</example>
+          <example>Já para o morador Fábio Santos, que também esteve acompanhando a manifestação, é lamentável a situação ao qual se enco...</example>
+          <example>“É a melhor notícia que eu poderia ter recebido”, comemora a moradora Madalena, que vive no Camanducaia há 8 anos.</example>
+      </antipattern>
       <pattern>
           <token inflected='yes' regexp='yes'>residir|morar|residente|morador</token>
           <token postag_regexp='yes' postag='[DN].+'>
@@ -1804,7 +1828,7 @@ USA
         <example>Entre em contato com ela se tiver alguma pergunta.</example>
         <example>Eu irei com você se for necessário.</example>
         <example>As pessoas vão rir de você se disser isso.</example>
-        <example>Por isso, se tiver algum problema ou comentário, propomos-lhe vários canais através dos quais poderá entrar em contact...</example>
+        <example>Se tiver algum problema, propomos-lhe vários canais através dos quais poderá entrar em contacto.</example>
     </antipattern>
 
     <antipattern> <!-- #3: se -->
@@ -1812,6 +1836,23 @@ USA
         <token postag='V......:.+' postag_regexp='yes'/>
         <example>O Cruzeiro venceu o Olimpia por 1 a 0 com gol de Marcelo Ramos e se sagrou-se campeão.</example>
         <example>É comum se denominá-los como enrolamento primário e secundário,</example>
+    </antipattern>
+
+    <antipattern> <!-- #4: se é -->
+        <token postag='N.+|AQ.+|V.+' postag_regexp='yes'/>
+        <token>se</token>
+        <token>é</token>
+        <example>Cada um decide por si próprio se é importante ou não.</example>
+        <example>Um inteiro n é par se é da forma n = 2k, onde k é um inteiro.</example>
+    </antipattern>
+
+    <antipattern> <!-- #5: se + singular second person informal verb -->
+        <token>se</token>
+        <token postag='VMSF2S0' postag_regexp='no'/>
+        <token postag='SPS.+|[DP].+|N.+|AQ.+|RG|RM|CS|V.+|Z0.+|_PUNCT|SENT_END' postag_regexp='yes'/>
+        <example>Verifica o texto e, se tiveres de alterar alguma coisa, diz.</example>
+        <example>Se quiseres te levo.</example>
+        <example>"E se encontrares apenas quarenta?", insistiu Abraão.</example>
     </antipattern>
 
     <antipattern>
@@ -1895,7 +1936,6 @@ USA
         <example>Lady Danbury é uma das minhas queridinhas desde que a conheci na série Os Bridgertons e aqui me peguei apaixonada por Malcom, seu gato, também.</example>
         <example>Depois eu parto, mas então me dou conta que esqueci minha mochila em sua casa.</example>
         <example>Eu quase me tornei carpinteiro.</example>
-        <example>Quanto mais você fala, menos lhe dão ouvidos.</example>
         <example>Alguma vez te sentiste enganado?</example>
         <example>Alguma vez te sentiste traído por um amigo?</example>
         <example>Então lhe foi dirigida esta palavra do Senhor: "Não será esse o herdeiro, mas alguém saído do teu sangue."</example>
@@ -3197,6 +3237,27 @@ USA
           <message>Grafia do Brasil. Substitua por <suggestion><match no='2' postag='NCM(.)000' postag_replace='NCF$1000'>experiência</match></suggestion>.</message>
           <example correction='experiência'>Vai começar o <marker>experimento</marker>.</example>
           <example correction='experiências'>Vão começar os <marker>experimentos</marker>.</example>
+      </rule>
+
+
+     <rule id='BRASILEIRISMO_ESTAR_DE_SACO_CHEIO' name="[pt-PT][Brasileirismo] estar 'de saco cheio' → farto/saturado">
+          <pattern>
+              <token skip='2' postag='VM.+' postag_regexp='yes' inflected='yes' regexp='no'>estar</token>
+              <marker>
+                  <token>de</token>
+                  <token>saco</token>
+                  <token>cheio</token>
+              </marker>
+          </pattern>
+          <message>Grafia do Brasil. Substitua por:</message>
+          <suggestion><match no='1' postag='VM...(.).' postag_replace='AQ0M$10'>farto</match></suggestion>
+          <suggestion><match no='1' postag='VM...(.).' postag_replace='AQ0F$10'>farto</match></suggestion>
+          <suggestion><match no='1' postag='VM...(.).' postag_replace='AQ0M$10'>saturado</match></suggestion>
+          <suggestion><match no='1' postag='VM...(.).' postag_replace='AQ0F$10'>saturado</match></suggestion>
+          <example correction='farto|farta|saturado|saturada'>Estou <marker>de saco cheio</marker>.</example>
+          <example correction='fartos|fartas|saturados|saturadas'>Estamos <marker>de saco cheio</marker>.</example>
+          <example>Estamos completamente saturados disto tudo.</example>
+          <example>A Ana está farta.</example>
       </rule>
 
 
