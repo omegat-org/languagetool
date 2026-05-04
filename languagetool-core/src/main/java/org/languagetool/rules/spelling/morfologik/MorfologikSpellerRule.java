@@ -238,8 +238,7 @@ public abstract class MorfologikSpellerRule extends SpellingCheckRule {
       if (binaryDict == null) {
         // should not happen, as we only configure this rule (or rather its subclasses)
         // when we have the resources:
-        // throw new RuntimeException("Cannot find dictionary file " + getFileName());
-        return true;
+        return;
       }
       initSpeller(binaryDict);
       spellersInitialized = true;
