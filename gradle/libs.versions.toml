@@ -1,27 +1,27 @@
 [versions]
 junit = "4.13.2"
-commons_cli = "1.5.0"
-commons_codec = "1.15"
+commons_cli = "1.9.0"
+commons_codec = "1.17.1.1.1.1.1.1.1.1"
 commons_collections4 = "4.4"
-commons_compress = "1.26.0"
-commons_csv = "1.9.0"
-commons_io = "2.11.0"
-commons_lang = "3.14.0"
-commons_pool = "2.11.1"
-commons_logging = "1.2"
+commons_compress = "1.27.1"
+commons_csv = "1.12.0"
+commons_io = "2.17.0"
+commons_lang = "3.18.0"
+commons_pool = "2.12.0"
+commons_logging = "1.3.4"
 commons_text = "1.12.0"
 commons_validator = "1.9.0"
-icu4j = { require = "[70,73.2[", prefer = "72.1" }
-lombok = "1.18.22"
-json = "20231013"
-logback = "1.3.14"
-slf4j = { strictly = "[2.0.7, 2.1[", prefer = "2.0.7" }
-annotations = "23.0.0"
-jackson = "2.17.2"
+icu4j = "77.1"
+lombok = "1.18.34"
+json = "20240303"
+logback = "1.5.18"
+slf4j = "2.0.16"
+annotations = "26.0.2"
+jackson = "2.18.0"
 morfologik = "2.1.9"
 lucene = "8.11.3"
 lucene_gosen = "8.11.0"
-guava = "32.1.2-jre"
+guava = "33.3.1-jre"
 openregex = "1.1.1"
 indriya = "1.3"
 language_detector = "0.6-2"
@@ -30,19 +30,18 @@ javax_activation_api = "1.2.0"
 javax_annotation_api = "1.3.2"
 opennlp = "1.5"
 opennlp_tools = "1.9.4"
-grpc = "1.66.0"
+grpc = "1.75.0"
 resilience4j = "1.7.1"
-micrometer = "1.7.1"
-prometheus = "0.12.0"
-mockito = "3.6.28"
-awaitility = "4.1.1"
+micrometer = "1.7.12"
+prometheus = "0.16.0"
+mockito = "3.12.4"
+awaitility = "4.2.2"
 emoji = "5.1.1"
 loomchild = "2.0.1"
 okhttp = "4.12.0"
 xz = "1.10"
-protoc = "3.25.3"
-protobuf = "3.25.5"
-
+protoc = "3.25.5"
+protobuf = "3.25.8"
 
 [libraries]
 # commons
@@ -78,18 +77,18 @@ jetbrains-annotations = {group = "org.jetbrains", name = "annotations", version.
 # testing
 junit4 = {group = "junit", name = "junit", version.ref = "junit"}
 mockito-core = {group = "org.mockito", name = "mockito-core", version.ref = "mockito"}
-rest-assured = {group = "io.rest-assured", name = "rest-assured", version = "5.1.1"}
+rest-assured = {group = "io.rest-assured", name = "rest-assured", version = "5.5.0"}
 
 # languagetool family
 asturian-pos-dict  = {group = "org.languagetool", name = "asturian-pos-dict", version = "0.1"}
-english-pos-dict = {group = "org.languagetool", name = "english-pos-dict", version = "0.3"}
+english-pos-dict = {group = "org.languagetool", name = "english-pos-dict", version = "0.6"}
 belarusian-pos-dict = {group = "io.github.belarus", name = "linguistics.grammardb.spell.languagetool", version = "1.0.2"}
-catalan-pos-dict = {group = "org.softcatala", name = "catalan-pos-dict", version = "2.26"}
-french-pos-dict = { group = "org.languagetool", name = "french-pos-dict", version = "0.5"}
+catalan-pos-dict = {group = "org.softcatala", name = "catalan-pos-dict", version = "2.27"}
+french-pos-dict = { group = "org.languagetool", name = "french-pos-dict", version = "0.7"}
 german-pos-dict = {group = "de.danielnaber", name = "german-pos-dict", version = "1.2.4"}
 jwordsplitter = {group = "de.danielnaber", name = "jwordsplitter", version = "4.7"}
 portuguese-pos-dict = { group = "org.languagetool", name = "portuguese-pos-dict", version = "1.2.0"}
-spanish-pos-dict = {group = "org.softcatala", name = "spanish-pos-dict", version = "2.3"}
+spanish-pos-dict = {group = "org.softcatala", name = "spanish-pos-dict", version = "2.5"}
 ga-dicts = {group = "io.github.jimregan", name = "languagetool-ga-dicts", version = "0.02"}
 dutch-pos-dict = {group = "org.languagetool", name = "dutch-pos-dict", version = "0.1"}
 ukrainian-lt = {group = "ua.net.nlp", name = "morfologik-ukrainian-lt", version = "6.4.4"}
@@ -137,22 +136,22 @@ loomchild-segment = {group = "net.loomchild", name = "segment", version.ref = "l
 emoji-java = {group = "com.vdurmont", name = "emoji-java", version.ref = "emoji"}
 hppc = {group = "com.carrotsearch", name = "hppc", version = "0.8.2"}
 morphology = {group = "org.ioperm", name = "morphology-el", version = "1.0.0"}
-fastutil = {group = "it.unimi.dsi", name = "fastutil-core", version = "8.5.12"}
+fastutil = {group = "it.unimi.dsi", name = "fastutil-core", version = "8.5.14"}
 
 # languagetool-server
 grpc-netty-shaded = {group = "io.grpc", name = "grpc-netty-shaded", version.ref = "grpc"}
 grpc-protobuf = {group = "io.grpc", name = "grpc-protobuf", version.ref = "grpc"}
 grpc-stub = {group = "io.grpc", name = "grpc-stub", version.ref = "grpc"}
-opentelemetry-api = {group = "io.opentelemetry", name = "opentelemetry-api", version = "1.26.0"}
-opentelemetry-semconv = {group = "io.opentelemetry", name = "opentelemetry-semconv", version = "1.26.0-alpha"}
+opentelemetry-api = {group = "io.opentelemetry", name = "opentelemetry-api", version = "1.42.1"}
+opentelemetry-semconv = {group = "io.opentelemetry", name = "opentelemetry-semconv", version = "1.30.1-alpha"}
 prometheus-simpleclient-guava = {group = "io.prometheus", name = "simpleclient_guava", version.ref = "prometheus"}
 prometheus-simpleclient-hotspot = {group = "io.prometheus", name = "simpleclient_hotspot", version = "0.16.0"}
 prometheus-simpleclient-httpserver = {group = "io.prometheus", name = "simpleclient_httpserver", version = "0.16.0"}
-mariadb = {group = "org.mariadb.jdbc", name = "mariadb-java-client", version = "2.7.6"}
-mybatis = {group = "org.mybatis", name = "mybatis", version = "3.5.9"}
-hsqldb = {group = "org.hsqldb", name = "hsqldb", version = "2.7.1"}
-lettuce = {group = "io.lettuce", name = "lettuce-core", version = "6.3.1.RELEASE"}
-bcrypt = {group = "at.favre.lib", name = "bcrypt", version = "0.6.0"}
+mariadb = {group = "org.mariadb.jdbc", name = "mariadb-java-client", version = "3.4.1"}
+mybatis = {group = "org.mybatis", name = "mybatis", version = "3.5.16"}
+hsqldb = {group = "org.hsqldb", name = "hsqldb", version = "2.7.3"}
+lettuce = {group = "io.lettuce", name = "lettuce-core", version = "6.8.1.RELEASE"}
+bcrypt = {group = "at.favre.lib", name = "bcrypt", version = "0.10.2"}
 okhttp = {group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp"}
 
 # wikipedia
