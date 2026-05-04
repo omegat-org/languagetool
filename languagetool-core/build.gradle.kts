@@ -17,7 +17,9 @@ sourceSets {
 dependencies {
     api(libs.slf4j.api)
     implementation(libs.trove4j)
-    implementation(libs.emoji.java)
+    implementation(libs.emoji.java) {
+        exclude(module = "json")
+    }
     implementation(libs.hppc)
     implementation(libs.jackson.databind)
     implementation(libs.guava)
@@ -39,8 +41,6 @@ dependencies {
     implementation(libs.javax.annotation.api)
     implementation(libs.javax.measure.unit)
     implementation(libs.loomchild.segment)
-    implementation(libs.jaxb.api)
-    runtimeOnly(libs.jaxb.runtime)
     implementation(libs.commons.lang)
     implementation(libs.commons.pool)
     implementation(libs.commons.text)
