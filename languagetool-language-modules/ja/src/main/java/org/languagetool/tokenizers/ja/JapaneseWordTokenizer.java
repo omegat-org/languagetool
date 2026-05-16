@@ -21,35 +21,32 @@ package org.languagetool.tokenizers.ja;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.java.sen.*;
-import net.java.sen.dictionary.Token;
+import com.atilika.kuromoji.ipadic.Token;
+import com.atilika.kuromoji.ipadic.Tokenizer;
 
-import org.languagetool.tokenizers.Tokenizer;
+public class JapaneseWordTokenizer implements org.languagetool.tokenizers.Tokenizer {
 
-public class JapaneseWordTokenizer implements Tokenizer {
-
-  private final StringTagger stringTagger;
+  private final Tokenizer tokenizer;
 
   public JapaneseWordTokenizer() {
-    stringTagger = SenFactory.getStringTagger(null, false);
+    tokenizer = new Tokenizer.Builder().build();
   }
 
   @Override  
   public List<String> tokenize(String text) {
     List<String> ret = new ArrayList<>();
     try {
-      synchronized (stringTagger) {
-        List<Token> tokens = new ArrayList<>();
-        stringTagger.analyze(text, tokens);
-        for (Token token : tokens) {
-          String basicForm;
-          if (token.getMorpheme().getBasicForm().equalsIgnoreCase("*")) {
-            basicForm = token.getSurface();
-          } else {
-            basicForm = token.getMorpheme().getBasicForm();
-          }
-          ret.add(token.getSurface() + " " + token.getMorpheme().getPartOfSpeech() + " " + basicForm);
+      List<Token> tokens = tokenizer.tokenize(text);
+      for (Token token : tokens) {
+        String basicForm;
+        if (token.getMorpheme().getBasicForm().equalsIgnoreCase("*")) {
+          basicForm = token.getSurface();
+        } else {
+          basicForm = token.getMorpheme().getBasicForm();
         }
+        String pos = token.getPartOfSpeechLevel1();
+
+        ret.add(token.getSurface() + " " + pos + " " + basicForm);
       }
     } catch (Exception e) {
       return ret;
