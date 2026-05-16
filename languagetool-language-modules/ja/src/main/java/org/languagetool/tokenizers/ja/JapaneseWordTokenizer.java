@@ -18,35 +18,50 @@
  */
 package org.languagetool.tokenizers.ja;
 
+import org.apache.lucene.analysis.CharArraySet;
+import org.apache.lucene.analysis.ja.JapaneseTokenizer;
+import org.apache.lucene.analysis.ja.tokenattributes.BaseFormAttribute;
+import org.apache.lucene.analysis.ja.tokenattributes.PartOfSpeechAttribute;
+import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
+import org.languagetool.tokenizers.Tokenizer;
+
+import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
-import com.atilika.kuromoji.ipadic.Token;
-import com.atilika.kuromoji.ipadic.Tokenizer;
 
-public class JapaneseWordTokenizer implements org.languagetool.tokenizers.Tokenizer {
+public class JapaneseWordTokenizer implements Tokenizer {
 
-  private final Tokenizer tokenizer;
-
-  public JapaneseWordTokenizer() {
-    tokenizer = new Tokenizer.Builder().build();
-  }
-
-  @Override  
+  @Override
   public List<String> tokenize(String text) {
     List<String> ret = new ArrayList<>();
-    try {
-      List<Token> tokens = tokenizer.tokenize(text);
-      for (Token token : tokens) {
-        String basicForm;
-        if (token.getMorpheme().getBasicForm().equalsIgnoreCase("*")) {
-          basicForm = token.getSurface();
-        } else {
-          basicForm = token.getMorpheme().getBasicForm();
-        }
-        String pos = token.getPartOfSpeechLevel1();
 
-        ret.add(token.getSurface() + " " + pos + " " + basicForm);
+    try (JapaneseTokenizer tokenizer = new JapaneseTokenizer(null, false, JapaneseTokenizer.Mode.SEARCH)) {
+      tokenizer.setReader(new StringReader(text));
+
+      CharTermAttribute termAtt = tokenizer.addAttribute(CharTermAttribute.class);
+      PartOfSpeechAttribute posAtt = tokenizer.addAttribute(PartOfSpeechAttribute.class);
+      BaseFormAttribute baseFormAtt = tokenizer.addAttribute(BaseFormAttribute.class);
+
+      tokenizer.reset();
+      while (tokenizer.incrementToken()) {
+        String surface = termAtt.toString();
+        String baseForm = baseFormAtt.getBaseForm();
+        if (baseForm == null || baseForm.equals("*")) {
+          baseForm = surface;
+        }
+        String pos = posAtt.getPartOfSpeech();
+        if (pos == null) {
+          pos = "";
+        } else {
+          int separateIndex = pos.indexOf("-");
+          if (separateIndex != -1) {
+            pos = pos.substring(0, separateIndex);
+          }
+        }
+        ret.add(surface + " " + pos + " " + baseForm);
       }
     } catch (Exception e) {
       return ret;
