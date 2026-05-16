@@ -20,7 +20,7 @@ package org.languagetool.rules.spelling.hunspell;
 
 import org.apache.lucene.analysis.hunspell.Dictionary;
 import org.apache.lucene.store.Directory;
-import org.apache.lucene.store.SimpleFSDirectory;
+import org.apache.lucene.store.FSDirectory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -43,7 +43,7 @@ public class LuceneHunspellDictionary implements HunspellDictionary {
   public LuceneHunspellDictionary(Path dictPath, Path affixPath) {
     try {
       Path dirTmp = Files.createTempDirectory("languagetool-lucene");
-      Directory tmpDirectory = new SimpleFSDirectory(dirTmp);
+      Directory tmpDirectory = FSDirectory.open(dirTmp);
       dictInputStream = Files.newInputStream(dictPath);
       affixInputStream = Files.newInputStream(affixPath);
       Dictionary dictionary = new Dictionary(tmpDirectory, "languagetool", dictInputStream, affixInputStream);
