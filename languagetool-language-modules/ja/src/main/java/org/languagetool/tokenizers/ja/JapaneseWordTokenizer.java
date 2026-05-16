@@ -18,7 +18,6 @@
  */
 package org.languagetool.tokenizers.ja;
 
-import org.apache.lucene.analysis.CharArraySet;
 import org.apache.lucene.analysis.ja.JapaneseTokenizer;
 import org.apache.lucene.analysis.ja.tokenattributes.BaseFormAttribute;
 import org.apache.lucene.analysis.ja.tokenattributes.PartOfSpeechAttribute;
@@ -27,9 +26,7 @@ import org.languagetool.tokenizers.Tokenizer;
 
 import java.io.StringReader;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 
 public class JapaneseWordTokenizer implements Tokenizer {
