@@ -15,7 +15,7 @@ version = projectVersion
 
 tasks.wrapper {
     distributionType = Wrapper.DistributionType.BIN
-    gradleVersion = "8.14.2"
+    gradleVersion = "9.2.1"
 }
 
 val ossrhUsername: String? by project
