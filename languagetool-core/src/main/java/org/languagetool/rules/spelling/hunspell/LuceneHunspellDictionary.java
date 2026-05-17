@@ -110,7 +110,7 @@ public class LuceneHunspellDictionary implements HunspellDictionary {
     for (String customWord : customWords) {
       if (customWord.length() > 2 &&
         (customWord.startsWith(lowerWord.substring(0, Math.min(2, lowerWord.length()))) ||
-          lowerWord.startsWith(customWord.substring(0, Math.min(2, customWord.length()))))) {
+          lowerWord.startsWith(customWord.substring(0, 2 /* Math.min(2, customWordWord.length()) is always 2 */)))) {
         if (!suggestions.contains(customWord)) {
           suggestions.add(customWord);
         }
