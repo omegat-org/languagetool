@@ -40,6 +40,7 @@ public class WordListValidatorTest {
           "å" +
           "ħ" +
           "ø" +
+          "ćŁğøİ" +
           "'’" +
           "./%-]+" +
           "|[khmcdµ]?m[²³]|°[CFR]|C?O₂-?.*|mc²";
@@ -224,6 +225,7 @@ public class WordListValidatorTest {
 
   private final String additionalValidationChars;
 
+  @SuppressWarnings("unused")
   public WordListValidatorTest() {
     this("");
   }
@@ -261,12 +263,14 @@ public class WordListValidatorTest {
     for (String word : words) {
       if (VALID_WORDS.contains(word) || VALID_WORDS.contains(word.trim())) {
         // okay
-      } else if (!validPattern.matcher(word).matches()) {
+        continue;
+      }
+      if (!validPattern.matcher(word).matches()) {
         failures.add("Word '" + word + "' from " + spellingFileName + " doesn't match regex: " + validChars +
                 " - please fix the word or add the character to the language's " + WordListValidatorTest.class.getName() + " if it's valid");
       }
     }
-    if (failures.size() > 0) {
+    if (!failures.isEmpty()) {
       fail(String.join("\n\n", failures));
     }
   }
