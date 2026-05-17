@@ -25,30 +25,33 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Iterator;
 
-import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class PedlerCorpusTest {
 
   @Test
   public void testCorpusAccess() throws IOException {
-    URL errors = PedlerCorpusTest.class.getResource("/org/languagetool/dev/eval");
-    PedlerCorpus corpus = new PedlerCorpus(new File(errors.getFile()));
+    URL resource = PedlerCorpusTest.class.getResource("/org/languagetool/dev/eval/error-corpus-example.txt");
+    assertNotNull("Missing test resource: /org/languagetool/dev/eval/error-corpus-example.txt", resource);
+
+    File errorFile = new File(resource.getFile());
+    PedlerCorpus corpus = new PedlerCorpus(errorFile.getParentFile());
     Iterator<ErrorSentence> iterator = corpus.iterator();
     assertTrue(iterator.hasNext());
     ErrorSentence sentence1 = iterator.next();
-    assertThat(sentence1.getAnnotatedText().getPlainText(),
-            is("But also please not that grammar checkers aren't perfect."));
-    assertThat(sentence1.getMarkupText(),
-            is("But <ERR targ=foo>also</ERR> please <ERR targ=note>not</ERR> that grammar checkers aren't perfect."));
+    assertEquals("But also please not that grammar checkers aren't perfect.",
+      sentence1.getAnnotatedText().getPlainText());
+    assertEquals("But <ERR targ=foo>also</ERR> please <ERR targ=note>not</ERR> that grammar checkers aren't perfect.",
+      sentence1.getMarkupText());
 
     ErrorSentence sentence2 = iterator.next();
-    assertThat(sentence2.getAnnotatedText().getPlainText(),
-            is("But also also please note note that grammar checkers aren't perfect."));
-    assertThat(sentence2.getMarkupText(),
-            is("But <ERR targ=bad suggestion>also also</ERR> please <ERR targ=note>note note</ERR> that grammar checkers aren't perfect."));
+    assertEquals("But also also please note note that grammar checkers aren't perfect.",
+      sentence2.getAnnotatedText().getPlainText());
+    assertEquals("But <ERR targ=bad suggestion>also also</ERR> please <ERR targ=note>note note</ERR> that grammar checkers aren't perfect.",
+      sentence2.getMarkupText());
 
     assertTrue(iterator.hasNext());
     iterator.next();
