@@ -39,6 +39,8 @@ dependencies {
     implementation(libs.javax.annotation.api)
     implementation(libs.javax.measure.unit)
     implementation(libs.loomchild.segment)
+    implementation(libs.jaxb.api)
+    runtimeOnly(libs.jaxb.runtime)
     implementation(libs.commons.lang)
     implementation(libs.commons.pool)
     implementation(libs.commons.text)

@@ -36,7 +36,10 @@ prometheus = "0.16.0"
 mockito = "3.12.4"
 awaitility = "4.2.2"
 emoji = "5.1.1"
-loomchild = "2.0.1"
+loomchild = "2.0.3"
+jaxb_api = "2.3.1"
+jaxb_runtime = "4.0.5"
+caffeine = "3.2.0"
 okhttp = "4.12.0"
 xz = "1.10"
 protoc = "3.25.5"
@@ -131,6 +134,8 @@ javax-measure-unit = {group = "javax.measure", name = "unit-api", version = "1.0
 awaitility = {group = "org.awaitility", name = "awaitility", version.ref = "awaitility"}
 java-diff-utils = {group = "io.github.java-diff-utils", name = "java-diff-utils", version = "4.12"}
 loomchild-segment = {group = "net.loomchild", name = "segment", version.ref = "loomchild"}
+jaxb-runtime = {group = "org.glassfish.jaxb", name = "jaxb-runtime", version.ref = "jaxb_runtime"}
+jaxb-api = {group = "javax.xml.bind", name = "jaxb-api", version.ref = "jaxb_api"}
 emoji-java = {group = "com.vdurmont", name = "emoji-java", version.ref = "emoji"}
 hppc = {group = "com.carrotsearch", name = "hppc", version = "0.8.2"}
 morphology = {group = "org.ioperm", name = "morphology-el", version = "1.0.0"}
@@ -143,8 +148,8 @@ grpc-stub = {group = "io.grpc", name = "grpc-stub", version.ref = "grpc"}
 opentelemetry-api = {group = "io.opentelemetry", name = "opentelemetry-api", version = "1.42.1"}
 opentelemetry-semconv = {group = "io.opentelemetry", name = "opentelemetry-semconv", version = "1.30.1-alpha"}
 prometheus-simpleclient-guava = {group = "io.prometheus", name = "simpleclient_guava", version.ref = "prometheus"}
-prometheus-simpleclient-hotspot = {group = "io.prometheus", name = "simpleclient_hotspot", version = "0.16.0"}
-prometheus-simpleclient-httpserver = {group = "io.prometheus", name = "simpleclient_httpserver", version = "0.16.0"}
+prometheus-simpleclient-hotspot = {group = "io.prometheus", name = "simpleclient_hotspot", version.ref = "prometheus"}
+prometheus-simpleclient-httpserver = {group = "io.prometheus", name = "simpleclient_httpserver", version.ref = "prometheus"}
 mariadb = {group = "org.mariadb.jdbc", name = "mariadb-java-client", version = "3.4.1"}
 mybatis = {group = "org.mybatis", name = "mybatis", version = "3.5.16"}
 hsqldb = {group = "org.hsqldb", name = "hsqldb", version = "2.7.3"}
