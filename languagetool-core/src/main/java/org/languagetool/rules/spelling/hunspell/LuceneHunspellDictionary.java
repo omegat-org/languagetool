@@ -46,7 +46,8 @@ public class LuceneHunspellDictionary implements HunspellDictionary {
       Directory tmpDirectory = new SimpleFSDirectory(dirTmp);
       dictInputStream = Files.newInputStream(dictPath);
       affixInputStream = Files.newInputStream(affixPath);
-      Dictionary dictionary = new Dictionary(tmpDirectory, "languagetool", dictInputStream, affixInputStream);
+      Dictionary dictionary = new Dictionary(tmpDirectory, "languagetool", affixInputStream,
+        Collections.singletonList(dictInputStream), false);
       hunspell = new org.apache.lucene.analysis.hunspell.Hunspell(dictionary);
       customWords = ConcurrentHashMap.newKeySet();
     } catch (IOException | ParseException e) {
