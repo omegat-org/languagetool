@@ -1,7 +1,7 @@
 [versions]
 junit = "4.13.2"
 commons_cli = "1.9.0"
-commons_codec = "1.17.1.1.1.1.1.1.1.1"
+commons_codec = "1.17.1"
 commons_collections4 = "4.4"
 commons_compress = "1.27.1"
 commons_csv = "1.12.0"
