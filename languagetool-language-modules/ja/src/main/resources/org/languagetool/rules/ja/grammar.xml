@@ -1322,8 +1322,7 @@ Japanese Grammar and Typo Rules file for LanguageTool
 		</rule>
 		<rule id="SUTORI-TOKINGU" name="ストリートキング">
 			<pattern>
-				<token>ストリート</token>
-				<token>キング</token>
+				<token>ストリートキング</token>
 			</pattern>
 			<message>誤字があります。<suggestion>ストリーキング</suggestion>の間違いです。</message>
 			<example correction="ストリーキング"><marker>ストリートキング</marker></example>
@@ -2676,8 +2675,7 @@ Japanese Grammar and Typo Rules file for LanguageTool
 		</rule>
 		<rule id="KAJIYA" name="鍛治屋">
 			<pattern>
-				<token>鍛治</token>
-                <token>屋</token>
+				<token>鍛治屋</token>
 			</pattern>
 			<message>誤変換です。<suggestion>鍛冶屋</suggestion>の間違いです。</message>
 			<example correction="鍛冶屋"><marker>鍛治屋</marker>。</example>
@@ -2770,8 +2768,7 @@ Japanese Grammar and Typo Rules file for LanguageTool
 		<rule id="KIMAJIME" name="気真面目">
 			<pattern>
 				<token>気</token>
-                <token>真面</token>
-                <token>目</token>
+                <token>真面目</token>
 			</pattern>
 			<message>誤変換です。<suggestion>生真面目</suggestion>の間違いです。</message>
 			<example correction="生真面目"><marker>気真面目</marker>。</example>
@@ -4967,8 +4964,7 @@ Japanese Grammar and Typo Rules file for LanguageTool
 		</rule>
 		<rule id="GISINANKIWOIDAKU" name="疑心暗鬼を抱く">
 			<pattern>
-                <token>疑心</token>
-                <token>暗鬼</token>
+                <token>疑心暗鬼</token>
 				<token skip="10">を</token>
 				<token regexp="yes" inflected="yes">抱く|いだく</token>
 			</pattern>
@@ -5870,8 +5866,7 @@ Japanese Grammar and Typo Rules file for LanguageTool
 		</rule>
 		<rule id="KAHANNSUUWOKOERU" name="過半数を超える">
 			<pattern>
-                <token>過</token>
-                <token>半数</token>
+                <token>過半数</token>
 				<token>を</token>
 				<token>超える</token>
 			</pattern>

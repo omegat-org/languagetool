@@ -35,7 +35,7 @@ public class JapaneseWordTokenizer implements Tokenizer {
   public List<String> tokenize(String text) {
     List<String> ret = new ArrayList<>();
 
-    try (JapaneseTokenizer tokenizer = new JapaneseTokenizer(null, false, JapaneseTokenizer.Mode.SEARCH)) {
+    try (JapaneseTokenizer tokenizer = new JapaneseTokenizer(null, false, JapaneseTokenizer.Mode.NORMAL)) {
       tokenizer.setReader(new StringReader(text));
 
       CharTermAttribute termAtt = tokenizer.addAttribute(CharTermAttribute.class);
