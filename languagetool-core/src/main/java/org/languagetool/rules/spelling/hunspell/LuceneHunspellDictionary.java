@@ -46,7 +46,8 @@ public class LuceneHunspellDictionary implements HunspellDictionary {
       Directory tmpDirectory = FSDirectory.open(dirTmp);
       dictInputStream = Files.newInputStream(dictPath);
       affixInputStream = Files.newInputStream(affixPath);
-      Dictionary dictionary = new Dictionary(tmpDirectory, "languagetool", dictInputStream, affixInputStream);
+      Dictionary dictionary = new Dictionary(tmpDirectory, "languagetool", affixInputStream,
+        Collections.singletonList(dictInputStream), false);
       hunspell = new org.apache.lucene.analysis.hunspell.Hunspell(dictionary);
       customWords = ConcurrentHashMap.newKeySet();
     } catch (IOException | ParseException e) {
@@ -109,7 +110,7 @@ public class LuceneHunspellDictionary implements HunspellDictionary {
     for (String customWord : customWords) {
       if (customWord.length() > 2 &&
         (customWord.startsWith(lowerWord.substring(0, Math.min(2, lowerWord.length()))) ||
-          lowerWord.startsWith(customWord.substring(0, Math.min(2, customWord.length()))))) {
+          lowerWord.startsWith(customWord.substring(0, 2 /* Math.min(2, customWordWord.length()) is always 2 */)))) {
         if (!suggestions.contains(customWord)) {
           suggestions.add(customWord);
         }
