@@ -19,7 +19,6 @@ annotations = "26.0.2"
 jackson = "2.21.1"
 morfologik = "2.1.9"
 lucene = "8.11.3"
-lucene_gosen = "8.11.0"
 guava = "33.3.1-jre"
 openregex = "1.1.1"
 indriya = "1.3"
@@ -117,7 +116,7 @@ opennlp-tools = {group = "org.apache.opennlp", name = "opennlp-tools", version.r
 # lucene
 lucene-backward-codecs = {group = "org.apache.lucene", name = "lucene-backward-codecs", version.ref = "lucene"}
 lucene-core = {group = "org.apache.lucene", name = "lucene-core", version.ref = "lucene"}
-lucene-gosen = {group = "org.omegat.lucene", name = "lucene-gosen", version.ref = "lucene_gosen"}
+lucene-kuromoji = {group = "org.apache.lucene", name = "lucene-analyzers-kuromoji", version.ref = "lucene"}
 lucene-analyzers-common = {group = "org.apache.lucene", name = "lucene-analyzers-common", version.ref = "lucene"}
 lucene-queries = {group = "org.apache.lucene", name = "lucene-queries", version.ref = "lucene"}
 lucene-sandbox = {group = "org.apache.lucene", name = "lucene-sandbox", version.ref = "lucene"}
