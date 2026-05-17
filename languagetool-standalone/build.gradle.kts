@@ -27,6 +27,6 @@ description = "LanguageTool stand-alone GUI"
 
 tasks.withType<Test> {
     minHeapSize = "512m"
-    maxHeapSize = "2048m"
+    maxHeapSize = "4096m"
     jvmArgs = listOf("-XX:MaxMetaspaceSize=512m")
 }
