@@ -3,7 +3,6 @@ plugins {
     `maven-publish`
     signing
     distribution
-    `test-report-aggregation`
     alias(libs.plugins.nexus.publish)
 }
 
@@ -43,18 +42,7 @@ repositories {
 
 dependencies {
     subprojects.forEach { proj ->
-        testReportAggregation(proj)
         wholeProjects(proj)
-    }
-}
-
-reporting {
-    reports {
-        val aggregateTestReport by creating(AggregateTestReport::class) {
-            testSuiteName = "test"
-            setGroup("verification")
-        }
-        tasks.getByPath("check").dependsOn(aggregateTestReport)
     }
 }
 
