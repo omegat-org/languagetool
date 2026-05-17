@@ -30,7 +30,7 @@ publishing {
         pom {
             name.set((project.findProperty("pomName") as String?) ?: project.name)
             description.set("languagetool library")
-            url.set("https://github.com/miurahr/languagetool/")
+            url.set("https://github.com/omegat-org/languagetool/")
             licenses {
                 license {
                     name.set("GNU Lesser General Public License, Version 2.1 or later (LGPL-2.1+)")
@@ -48,9 +48,9 @@ publishing {
             }
 
             scm {
-                connection.set("scm:git:git://github.com/miurahr/languagetool.git")
-                developerConnection.set("scm:git:ssh://github.com/miurahr/languagetool.git")
-                url.set("https://github.com/miurahr/languagetool/")
+                connection.set("scm:git:git://github.com/omegat-org/languagetool.git")
+                developerConnection.set("scm:git:ssh://github.com/omegat-org/languagetool.git")
+                url.set("https://github.com/omegat-org/languagetool/")
             }
         }
     }

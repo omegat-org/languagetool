@@ -2,8 +2,6 @@ plugins {
     java
     `maven-publish`
     signing
-    distribution
-    `test-report-aggregation`
     alias(libs.plugins.nexus.publish)
 }
 
@@ -50,41 +48,6 @@ signing {
         }
         "signing.gnupg.keyName" -> {
             useGpgCmd()
-        }
-    }
-}
-
-val wholeProjects by configurations.creating
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    subprojects.forEach { proj ->
-        testReportAggregation(proj)
-        wholeProjects(proj)
-    }
-}
-
-reporting {
-    reports {
-        val aggregateTestReport by creating(AggregateTestReport::class) {
-            subprojects {
-                val testTasks = tasks.withType<Test>()
-                testTasks.configureEach {
-                    ignoreFailures = true
-                }
-            }
-        }
-    }
-}
-
-distributions {
-    main {
-        contents {
-            from(wholeProjects)
-            into("libs")
         }
     }
 }
