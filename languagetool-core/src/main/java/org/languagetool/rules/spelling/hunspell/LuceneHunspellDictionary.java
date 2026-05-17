@@ -19,6 +19,7 @@
 package org.languagetool.rules.spelling.hunspell;
 
 import org.apache.lucene.analysis.hunspell.Dictionary;
+import org.apache.lucene.analysis.hunspell.SortingStrategy;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
@@ -46,8 +47,8 @@ public class LuceneHunspellDictionary implements HunspellDictionary {
       Directory tmpDirectory = FSDirectory.open(dirTmp);
       dictInputStream = Files.newInputStream(dictPath);
       affixInputStream = Files.newInputStream(affixPath);
-      Dictionary dictionary = new Dictionary(tmpDirectory, "languagetool", affixInputStream,
-        Collections.singletonList(dictInputStream), false);
+      Dictionary dictionary = new Dictionary(affixInputStream, Collections.singletonList(dictInputStream), false,
+        SortingStrategy.offline(tmpDirectory, "languagetool"));
       hunspell = new org.apache.lucene.analysis.hunspell.Hunspell(dictionary);
       customWords = ConcurrentHashMap.newKeySet();
     } catch (IOException | ParseException e) {
