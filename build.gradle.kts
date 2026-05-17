@@ -3,7 +3,6 @@ plugins {
     `maven-publish`
     signing
     distribution
-    `test-report-aggregation`
     alias(libs.plugins.nexus.publish)
 }
 
@@ -35,6 +34,26 @@ nexusPublishing.repositories {
     }
 }
 
+val signKey = listOf("signingKey", "signing.keyId", "signing.gnupg.keyName").find {project.hasProperty(it)}
+tasks.withType<Sign> {
+    onlyIf { signKey != null }
+}
+
+signing {
+    when (signKey) {
+        "signingKey" -> {
+            val signingKey: String? by project
+            val signingPassword: String? by project
+            useInMemoryPgpKeys(signingKey, signingPassword)
+        }
+        "signing.keyId" -> {
+        }
+        "signing.gnupg.keyName" -> {
+            useGpgCmd()
+        }
+    }
+}
+
 val wholeProjects by configurations.creating
 
 repositories {
@@ -43,18 +62,7 @@ repositories {
 
 dependencies {
     subprojects.forEach { proj ->
-        testReportAggregation(proj)
         wholeProjects(proj)
-    }
-}
-
-reporting {
-    reports {
-        val aggregateTestReport by creating(AggregateTestReport::class) {
-            testSuiteName = "test"
-            setGroup("verification")
-        }
-        tasks.getByPath("check").dependsOn(aggregateTestReport)
     }
 }
 
