@@ -18,9 +18,11 @@
  */
 package org.languagetool.rules.spelling.hunspell;
 
+import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.lucene.analysis.hunspell.Dictionary;
 import org.apache.lucene.store.Directory;
-import org.apache.lucene.store.SimpleFSDirectory;
+import org.apache.lucene.store.FSDirectory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,17 +35,26 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Slf4j
 public class LuceneHunspellDictionary implements HunspellDictionary {
   private final org.apache.lucene.analysis.hunspell.Hunspell hunspell;
-  private boolean closed = false;
   private final InputStream dictInputStream;
   private final InputStream affixInputStream;
   private final Set<String> customWords;
+  private final Path dictionaryPath;
+  private final Path affixPath;
+  @Getter
+  private final boolean deleteOnClose;
+  @Getter
+  private boolean closed = false;
 
-  public LuceneHunspellDictionary(Path dictPath, Path affixPath) {
+  public LuceneHunspellDictionary(Path dictPath, Path affixPath, boolean cleanup) {
+    this.dictionaryPath = dictPath;
+    this.affixPath = affixPath;
+    deleteOnClose = cleanup;
     try {
       Path dirTmp = Files.createTempDirectory("languagetool-lucene");
-      Directory tmpDirectory = new SimpleFSDirectory(dirTmp);
+      Directory tmpDirectory = FSDirectory.open(dirTmp);
       dictInputStream = Files.newInputStream(dictPath);
       affixInputStream = Files.newInputStream(affixPath);
       Dictionary dictionary = new Dictionary(tmpDirectory, "languagetool", affixInputStream,
@@ -119,12 +130,8 @@ public class LuceneHunspellDictionary implements HunspellDictionary {
   }
 
   @Override
-  public boolean isClosed() {
-    return closed;
-  }
-
-  @Override
   public void close() throws IOException {
+    closed = true;
     if (dictInputStream != null) {
       dictInputStream.close();
     }
@@ -132,6 +139,20 @@ public class LuceneHunspellDictionary implements HunspellDictionary {
       affixInputStream.close();
     }
     customWords.clear();
-    closed = true;
+
+    // Clean up temp files if this dictionary owns them (fixes #11380)
+    if (deleteOnClose) {
+      try {
+        boolean dicDeleted = Files.deleteIfExists(dictionaryPath);
+        boolean affDeleted = Files.deleteIfExists(affixPath);
+        if (dicDeleted || affDeleted) {
+          log.trace("Deleted temporary Hunspell files: {} (deleted: {}) and {} (deleted: {})",
+            dictionaryPath, dicDeleted, affixPath, affDeleted);
+        }
+      } catch (IOException e) {
+        // Log but don't throw - cleanup is best effort
+        log.trace("Failed to delete temporary Hunspell files: {} and {}", dictionaryPath, affixPath, e);
+      }
+    }
   }
 }

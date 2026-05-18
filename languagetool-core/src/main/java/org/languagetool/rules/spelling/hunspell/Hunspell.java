@@ -56,7 +56,7 @@ public final class Hunspell {
         // Create temp files from streams - must clean up when dictionary is closed
         var tempFiles = createTempFilesFromStreams(language, dictionaryStream, affixStream);
         log.trace("Created temp files for language {}: {} and {}", language, tempFiles.dictionary, tempFiles.affix);
-        return new DumontsHunspellDictionary(tempFiles.dictionary, tempFiles.affix, true);
+        return new LuceneHunspellDictionary(tempFiles.dictionary, tempFiles.affix, true);
       }
     };
   }
