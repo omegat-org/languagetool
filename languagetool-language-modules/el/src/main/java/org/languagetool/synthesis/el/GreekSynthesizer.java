@@ -33,6 +33,7 @@ public class GreekSynthesizer extends BaseSynthesizer {
   public static final GreekSynthesizer INSTANCE = new GreekSynthesizer();
 
   /** @deprecated use {@link #INSTANCE} */
+  @Deprecated
   public GreekSynthesizer(Language lang) {
     this();
   }

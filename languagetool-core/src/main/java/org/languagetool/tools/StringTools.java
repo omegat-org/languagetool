@@ -677,6 +677,7 @@ public final class StringTools {
    * @since 4.6
    * @deprecated use DataBroker#getFromResourceDirAsLines(java.lang.String) instead (NOTE: it won't handle comments)
    */
+  @Deprecated
   public static List<String> loadLines(String path) {
     InputStream stream = JLanguageTool.getDataBroker().getFromResourceDirAsStream(path);
     List<String> l = new ArrayList<>();

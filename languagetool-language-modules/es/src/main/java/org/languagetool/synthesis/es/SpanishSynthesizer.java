@@ -47,6 +47,7 @@ public class SpanishSynthesizer extends BaseSynthesizer {
   public static final SpanishSynthesizer INSTANCE = new SpanishSynthesizer();
 
   /** @deprecated use {@link #INSTANCE} */
+  @Deprecated
   public SpanishSynthesizer(Language lang) {
     this();
   }

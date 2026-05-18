@@ -68,6 +68,7 @@ public class BaseSynthesizer implements Synthesizer {
    * @param tagFileName The name of a file containing all possible tags.
    * @deprecated use {@link #BaseSynthesizer(String, String, String, String)}
    */
+  @Deprecated
   public BaseSynthesizer(String sorosFileName, String resourceFileName, String tagFileName, Language lang) {
     this(sorosFileName, resourceFileName, tagFileName, lang.getShortCode());
     this.language = lang;
@@ -119,6 +120,7 @@ public class BaseSynthesizer implements Synthesizer {
   /**
    * @deprecated use {@link #BaseSynthesizer(String, String, String)}
    */
+  @Deprecated
   public BaseSynthesizer(String resourceFileName, String tagFileName, Language lang) {
     this(resourceFileName, tagFileName, lang.getShortCode());
     this.language = lang;

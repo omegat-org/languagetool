@@ -65,10 +65,12 @@ public class RussianChunker implements Chunker {
   }
 
   /** @deprecated for internal use only */
+  @Deprecated
   public static void setDebug(boolean debugMode) {
     debug = debugMode;
   }
   /** @deprecated for internal use only */
+  @Deprecated
   public static boolean isDebug() {
     return debug;
   }

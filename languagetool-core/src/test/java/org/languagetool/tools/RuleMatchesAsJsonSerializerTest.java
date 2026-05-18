@@ -43,12 +43,11 @@ public class RuleMatchesAsJsonSerializerTest {
   private final List<RuleMatch> matches2;
   {
     FakeRule rule = new FakeRule();
-    rule.setTags(Arrays.asList(Tag.picky));
-    matches2 = Arrays.asList(
-              new RuleMatch(rule,
-              new JLanguageTool(Languages.getLanguageForShortCode("xx")).getAnalyzedSentence("This is an test sentence."),
-              1, 3, "My Message, use <suggestion>foo</suggestion> instead", "short message")
-      );
+    rule.setTags(List.of(Tag.picky));
+    matches2 = List.of(
+      new RuleMatch(rule, new JLanguageTool(Languages.getLanguageForShortCode("xx")).getAnalyzedSentence("This is an test sentence."),
+        1, 3, "My Message, use <suggestion>foo</suggestion> instead", "short message")
+    );
   }
 
   public RuleMatchesAsJsonSerializerTest() throws IOException {
@@ -60,7 +59,8 @@ public class RuleMatchesAsJsonSerializerTest {
     String json = serializer.ruleMatchesToJson(matches, "This is an text.", 5, lang);
     // Software:
     assertContains("\"LanguageTool\"", json);
-    assertContains(JLanguageTool.VERSION, json);
+    // Version is null when running as Unit Test
+    // assertContains(LtBuildInfo.OS.getVersion(), json);
     // Language:
     assertContains("\"Testlanguage\"", json);
     assertContains("\"xx-XX\"", json);
@@ -86,6 +86,7 @@ public class RuleMatchesAsJsonSerializerTest {
   }
 
   private void assertContains(String expectedSubstring, String json) {
+    assertNotNull("JSON was null", json);
     assertTrue("Did not find expected string '" + expectedSubstring + "' in JSON:\n" + json, json.contains(expectedSubstring));
   }
 

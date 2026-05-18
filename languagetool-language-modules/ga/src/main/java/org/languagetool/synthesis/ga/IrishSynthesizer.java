@@ -33,6 +33,7 @@ public class IrishSynthesizer extends BaseSynthesizer {
   public static final IrishSynthesizer INSTANCE = new IrishSynthesizer();
 
   /** @deprecated use {@link #INSTANCE} */
+  @Deprecated
   public IrishSynthesizer(Language lang) {
     this();
   }

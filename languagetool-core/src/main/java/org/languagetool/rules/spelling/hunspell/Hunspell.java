@@ -48,7 +48,7 @@ public final class Hunspell {
       @Override
       public HunspellDictionary createFromLocalFiles(String languageCode, Path dictionary, Path affix) {
         // Local files on disk - no temp files, no cleanup needed
-        return new DumontsHunspellDictionary(dictionary, affix, false);
+        return new LuceneHunspellDictionary(dictionary, affix, false);
       }
 
       @Override
@@ -167,7 +167,7 @@ public final class Hunspell {
       }
 
       var tempFiles = createTempFilesFromStreams(language, dictionaryStream, affixStream);
-      var dict = new DumontsHunspellDictionary(tempFiles.dictionary, tempFiles.affix, false);
+      var dict = new LuceneHunspellDictionary(tempFiles.dictionary, tempFiles.affix, false);
 
       // Cache by resource path for future lookups (fixes #11380)
       resourceCache.put(key, dict);

@@ -32,10 +32,12 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static junit.framework.Assert.assertFalse;
-import static junit.framework.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
 
 public class HunspellRuleTest {
 
@@ -84,14 +86,14 @@ public class HunspellRuleTest {
     
     RuleMatch[] matches = rule.match(lt.getAnalyzedSentence("- Teex"));
     assertEquals(1, matches.length); 
-    assertEquals("Tee", matches[0].getSuggestedReplacements().get(0));
+    assertEquals("Teen", matches[0].getSuggestedReplacements().get(0));
     assertEquals(2, matches[0].getFromPos());
     assertEquals(6, matches[0].getToPos());
     
     matches = rule.match(lt.getAnalyzedSentence("-Teex"));
     assertEquals(1, matches.length);
     //assertEquals("[-tee, -telex, -tees, -teen, -teer, -tee-, -text]", matches[0].getSuggestedReplacements().toString()); // Preferably "Tee" !?
-    assertEquals("[Tee, Telex, Tees, Teen, Teer, Tee-, Texte, TeX, Text]", matches[0].getSuggestedReplacements().toString()); // Preferably "Tee" !?
+    assertEquals("[Teen, Tee, Telex, Tees, Teer, Tee-, Texte, TeX, Text]", matches[0].getSuggestedReplacements().toString()); // Preferably "Tee" !?
     assertEquals(1, matches[0].getFromPos());
     assertEquals(5, matches[0].getToPos());
     

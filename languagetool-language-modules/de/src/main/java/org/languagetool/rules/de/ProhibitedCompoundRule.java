@@ -49,6 +49,7 @@ public class ProhibitedCompoundRule extends Rule {
    * @since 4.3
    * @deprecated each pair has its own id since LT 5.1
    */
+  @Deprecated
   public static final String RULE_ID = "DE_PROHIBITED_COMPOUNDS";
   // have objects static for better performance (rule gets initialized for every check)
   private static final List<Pair> lowercasePairs = Arrays.asList(

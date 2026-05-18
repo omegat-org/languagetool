@@ -33,6 +33,7 @@ public class SlovakSynthesizer extends BaseSynthesizer {
   public static final SlovakSynthesizer INSTANCE = new SlovakSynthesizer();
 
   /** @deprecated use {@link #INSTANCE} */
+  @Deprecated
   public SlovakSynthesizer(Language lang) {
     this();
   }

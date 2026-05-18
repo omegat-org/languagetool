@@ -21,6 +21,7 @@ package org.languagetool.rules.ngrams;
 import com.google.common.cache.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.TestOnly;
 import org.languagetool.*;
 import org.languagetool.broker.ResourceDataBroker;
 import org.languagetool.languagemodel.LanguageModel;
@@ -49,6 +50,7 @@ public abstract class ConfusionProbabilityRule extends Rule {
    * @since 3.1
    * @deprecated not used anymore, the id is now more specific (like {@code CONFUSION_RULE_TERM1_TERM2})
    */
+  @Deprecated
   public static final String RULE_ID = "CONFUSION_RULE";
   // probability is only used then at least these many of the occurrence lookups succeeded, 
   // i.e. returned a value > 0:
@@ -276,6 +278,7 @@ public abstract class ConfusionProbabilityRule extends Rule {
   }
   
   /** @deprecated used only for tests */
+  @Deprecated
   public void setConfusionPair(ConfusionPair pair) {
     wordToPairs.clear();
     for (ConfusionString word : pair.getTerms()) {

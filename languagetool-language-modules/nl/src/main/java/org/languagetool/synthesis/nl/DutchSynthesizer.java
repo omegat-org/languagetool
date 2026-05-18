@@ -34,6 +34,7 @@ public class DutchSynthesizer extends BaseSynthesizer {
   public static final DutchSynthesizer INSTANCE = new DutchSynthesizer();
 
   /** @deprecated use {@link #INSTANCE} */
+  @Deprecated
   public DutchSynthesizer(Language lang) {
     this();
   }

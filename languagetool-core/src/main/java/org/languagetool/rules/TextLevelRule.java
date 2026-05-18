@@ -42,6 +42,7 @@ public abstract class TextLevelRule extends Rule {
   /**
    * @deprecated use {@link #match(List, AnnotatedText)} instead
    */
+  @Deprecated
   public abstract RuleMatch[] match(List<AnalyzedSentence> sentences) throws IOException;
 
   /**

@@ -33,6 +33,7 @@ public class RussianSynthesizer extends BaseSynthesizer {
   public static final RussianSynthesizer INSTANCE = new RussianSynthesizer();
 
   /** @deprecated use {@link #INSTANCE} */
+  @Deprecated
   public RussianSynthesizer(Language lang) {
     this();
   }

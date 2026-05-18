@@ -28,6 +28,7 @@ public class ItalianSynthesizer extends BaseSynthesizer {
 
   public static final ItalianSynthesizer INSTANCE = new ItalianSynthesizer();
   /** @deprecated use {@link #INSTANCE} */
+  @Deprecated
   public ItalianSynthesizer(Language lang) {
     this();
   }

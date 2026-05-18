@@ -34,6 +34,7 @@ public class RomanianSynthesizer extends BaseSynthesizer {
   public static final RomanianSynthesizer INSTANCE = new RomanianSynthesizer();
 
   /** @deprecated use {@link #INSTANCE} */
+  @Deprecated
   public RomanianSynthesizer(Language lang) {
     this();
   }

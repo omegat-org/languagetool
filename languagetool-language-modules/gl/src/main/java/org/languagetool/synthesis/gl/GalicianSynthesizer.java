@@ -34,6 +34,7 @@ public class GalicianSynthesizer extends BaseSynthesizer {
   public static final GalicianSynthesizer INSTANCE = new GalicianSynthesizer();
 
   /** @deprecated use {@link #INSTANCE} */
+  @Deprecated
   public GalicianSynthesizer(Language lang) {
     this();
   }

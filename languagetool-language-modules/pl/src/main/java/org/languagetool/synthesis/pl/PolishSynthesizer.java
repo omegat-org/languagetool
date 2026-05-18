@@ -62,6 +62,7 @@ public class PolishSynthesizer extends BaseSynthesizer implements Synthesizer {
   public static final PolishSynthesizer INSTANCE = new PolishSynthesizer();
 
   /** @deprecated use {@link #INSTANCE} */
+  @Deprecated
   public PolishSynthesizer(Language lang) {
     this();
   }

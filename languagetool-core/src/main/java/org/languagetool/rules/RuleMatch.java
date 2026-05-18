@@ -81,6 +81,7 @@ public class RuleMatch implements Comparable<RuleMatch> {
    *
    * @deprecated use a constructor that also takes an {@code AnalyzedSentence} parameter (deprecated since 4.0)
    */
+  @Deprecated
   public RuleMatch(Rule rule, int fromPos, int toPos, String message) {
     this(rule, fromPos, toPos, message, null, false, null);
   }
@@ -136,6 +137,7 @@ public class RuleMatch implements Comparable<RuleMatch> {
   /**
    * @deprecated use a constructor that also takes an {@code AnalyzedSentence} parameter (deprecated since 4.0)
    */
+  @Deprecated
   public RuleMatch(Rule rule, int fromPos, int toPos, String message, String shortMessage,
                    boolean startWithUppercase, String suggestionsOutMsg) {
     this(rule, null, fromPos, toPos, fromPos, toPos, message, shortMessage, startWithUppercase, false, suggestionsOutMsg, false);
@@ -264,6 +266,7 @@ public class RuleMatch implements Comparable<RuleMatch> {
    *
    * @deprecated rely on the character-based {@link #getFromPos()} instead (deprecated since 3.4)
    */
+  @Deprecated
   public int getLine() {
     return linePosition.getStart();
   }
@@ -280,6 +283,7 @@ public class RuleMatch implements Comparable<RuleMatch> {
    *
    * @deprecated rely on {@link #getToPos()} instead (deprecated since 3.4)
    */
+  @Deprecated
   public int getEndLine() {
     return linePosition.getEnd();
   }
@@ -296,6 +300,7 @@ public class RuleMatch implements Comparable<RuleMatch> {
    *
    * @deprecated rely on the character-based {@link #getFromPos()} instead (deprecated since 3.4)
    */
+  @Deprecated
   public int getColumn() {
     return columnPosition.getStart();
   }
@@ -305,6 +310,7 @@ public class RuleMatch implements Comparable<RuleMatch> {
    *
    * @deprecated (deprecated since 3.5)
    */
+  @Deprecated
   public void setColumn(int column) {
     this.columnPosition = new ColumnPosition(column, columnPosition.getEnd());
   }
@@ -314,6 +320,7 @@ public class RuleMatch implements Comparable<RuleMatch> {
    *
    * @deprecated rely on {@link #getToPos()} instead (deprecated since 3.4)
    */
+  @Deprecated
   public int getEndColumn() {
     return columnPosition.getEnd();
   }
@@ -323,7 +330,8 @@ public class RuleMatch implements Comparable<RuleMatch> {
    *
    * @deprecated (deprecated since 3.5)
    */
-  public void setEndColumn(int endColumn) {
+   @Deprecated
+   public void setEndColumn(int endColumn) {
     this.columnPosition = new ColumnPosition(columnPosition.getStart(), endColumn);
   }
 

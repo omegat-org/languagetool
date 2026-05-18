@@ -43,6 +43,7 @@ public class GermanSynthesizer extends BaseSynthesizer {
       "wißt", "wußtest", "wüßtest"));
 
   /** @deprecated use {@link #INSTANCE} */
+  @Deprecated
   public GermanSynthesizer(Language lang) {
     this();
   }

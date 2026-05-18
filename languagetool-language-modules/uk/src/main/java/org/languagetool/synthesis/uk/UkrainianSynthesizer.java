@@ -34,6 +34,7 @@ public class UkrainianSynthesizer extends BaseSynthesizer {
   public static final UkrainianSynthesizer INSTANCE = new UkrainianSynthesizer();
 
   /** @deprecated use {@link #INSTANCE} */
+  @Deprecated
   public UkrainianSynthesizer(Language lang) {
     this();
   }

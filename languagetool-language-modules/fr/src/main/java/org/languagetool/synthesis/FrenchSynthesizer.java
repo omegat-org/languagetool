@@ -33,6 +33,7 @@ public class FrenchSynthesizer extends BaseSynthesizer {
   private static final List<String> exceptionsEgrave = Arrays.asList(new String[]{"burkinabè", "koinè", "épistémè"});
 
   /** @deprecated use {@link #INSTANCE} */
+  @Deprecated
   public FrenchSynthesizer(Language lang) {
     this();
   }

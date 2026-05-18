@@ -84,6 +84,7 @@ public class UppercaseSentenceStartRule extends TextLevelRule {
   /**
    * @deprecated use {@link #UppercaseSentenceStartRule(ResourceBundle, Language, IncorrectExample, CorrectExample)} instead (deprecated since 3.3)
    */
+  @Deprecated
   public UppercaseSentenceStartRule(ResourceBundle messages, Language language) {
     this(messages, language, null, null);
   }

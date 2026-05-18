@@ -34,6 +34,7 @@ public class SwedishSynthesizer extends BaseSynthesizer {
   public static final SwedishSynthesizer INSTANCE = new SwedishSynthesizer();
 
   /** @deprecated use {@link #INSTANCE} */
+  @Deprecated
   public SwedishSynthesizer(Language lang) {
     this();
   }

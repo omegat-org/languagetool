@@ -33,6 +33,7 @@ import org.languagetool.rules.spelling.morfologik.MorfologikSpellerRule;
  * (except those listed in the dictionary of course).
  * @deprecated since 4.4, use GermanSpellerRule
  */
+@Deprecated
 public final class MorfologikGermanyGermanSpellerRule extends MorfologikSpellerRule {
 
   private static final String RESOURCE_FILENAME = "/de/hunspell/de_DE.dict";

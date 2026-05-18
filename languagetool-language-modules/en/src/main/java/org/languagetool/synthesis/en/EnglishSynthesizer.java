@@ -63,6 +63,7 @@ public class EnglishSynthesizer extends BaseSynthesizer {
   public static final EnglishSynthesizer INSTANCE = new EnglishSynthesizer();
 
   /** @deprecated use {@link #INSTANCE} */
+  @Deprecated
   public EnglishSynthesizer(Language lang) {
     this();
   }
