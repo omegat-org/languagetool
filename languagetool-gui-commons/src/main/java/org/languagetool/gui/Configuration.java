@@ -43,6 +43,7 @@ import org.jetbrains.annotations.Nullable;
 import org.languagetool.JLanguageTool;
 import org.languagetool.Language;
 import org.languagetool.Languages;
+import org.languagetool.LtBuildInfo;
 import org.languagetool.rules.ITSIssueType;
 import org.languagetool.rules.Rule;
 import org.languagetool.rules.RuleOption;
@@ -1670,8 +1671,11 @@ public class Configuration {
     Properties props = new Properties();
     String qualifier = getQualifier(lang);
 
-    String[] versionParts = JLanguageTool.VERSION.split("-");
-    props.setProperty(LT_VERSION_KEY, versionParts[0]);
+    String version = LtBuildInfo.OS.getVersion();
+    if (version != null) {
+      String[] versionParts = version.split("-");
+      props.setProperty(LT_VERSION_KEY, versionParts[0]);
+    }
 
     if (currentProfile != null && !currentProfile.isEmpty()) {
       props.setProperty(CURRENT_PROFILE_KEY, currentProfile);
