@@ -15,6 +15,7 @@ icu4j = "77.1"
 lombok = "1.18.34"
 logback = "1.5.25"
 slf4j = "2.0.17"
+jspecify = "1.0.0"
 annotations = "26.0.2"
 jackson = "2.21.1"
 morfologik = "2.1.9"
@@ -74,6 +75,7 @@ json = {group = "org.json", name ="json", version.ref = "json_java"}
 jackson-databind = {group ="com.fasterxml.jackson.core", name = "jackson-databind", version.ref = "jackson"}
 
 # annotation
+jspecify = {group = "org.jspecify", name = "jspecify", version.ref = "jspecify"}
 jetbrains-annotations = {group = "org.jetbrains", name = "annotations", version.ref = "annotations"}
 
 # testing
