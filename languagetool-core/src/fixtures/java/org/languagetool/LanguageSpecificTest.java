@@ -19,7 +19,19 @@
 package org.languagetool;
 
 import org.languagetool.language.Demo;
-import org.languagetool.rules.*;
+import org.languagetool.rules.AbstractCheckCaseRule;
+import org.languagetool.rules.AbstractSimpleReplaceRule;
+import org.languagetool.rules.AbstractSimpleReplaceRule2;
+import org.languagetool.rules.Categories;
+import org.languagetool.rules.ConfusionSetLoader;
+import org.languagetool.rules.CorrectExample;
+import org.languagetool.rules.ExampleSentence;
+import org.languagetool.rules.IncorrectExample;
+import org.languagetool.rules.Rule;
+import org.languagetool.rules.RuleMatch;
+import org.languagetool.rules.SuggestionWithMessage;
+import org.languagetool.rules.WordCoherencyDataLoader;
+import org.languagetool.rules.WordListValidatorTest;
 import org.languagetool.rules.ngrams.FakeLanguageModel;
 import org.languagetool.rules.patterns.AbstractPatternRule;
 import org.languagetool.rules.patterns.PatternRuleLoader;
@@ -29,10 +41,18 @@ import org.languagetool.tagging.disambiguation.rules.DisambiguationRuleTest;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
-import static junit.framework.Assert.fail;
+import static org.junit.Assert.fail;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.languagetool.rules.Categories.ALL;
@@ -48,6 +68,10 @@ public class LanguageSpecificTest {
   }
 
   protected void runTests(Language lang, String onlyRunCode, String additionalValidationChars) throws IOException {
+    runTests(lang, lang, onlyRunCode, additionalValidationChars);
+  }
+
+  protected void runTests(Language lang, Language langVariantForReplaceTests, String onlyRunCode, String additionalValidationChars) throws IOException {
     new WordListValidatorTest(additionalValidationChars).testWordListValidity(lang);
     testNoLineBreaksEtcInMessage(lang);
     testNoQuotesAroundSuggestion(lang);
@@ -56,7 +80,7 @@ public class LanguageSpecificTest {
     testConfusionSetLoading();
     countTempOffRules(lang);
     testCoherencyBaseformIsOtherForm(lang);
-    testReplaceRuleReplacements(lang);
+    testReplaceRuleReplacements(langVariantForReplaceTests);
     try {
       new DisambiguationRuleTest().testDisambiguationRulesFromXML();
     } catch (Exception e) {
