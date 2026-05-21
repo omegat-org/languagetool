@@ -23,7 +23,11 @@ import org.languagetool.Language;
 import org.languagetool.rules.spelling.CachingWordListLoader;
 import org.languagetool.rules.spelling.SpellingCheckRule;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 import static junit.framework.TestCase.fail;
@@ -31,13 +35,14 @@ import static junit.framework.TestCase.fail;
 public class WordListValidatorTest {
 
   private static final String VALID_CHARS =
-          "[ 0-9a-zA-ZöäüÖÄÜßëçèéáàóòÈÉÁÀÓÒÍãñíîŞş&*_:\\\\" +
+          "[ 0-9a-zA-ZöäüÖÄÜßëçèéáàóòŁÈÉÁÀÓÒÍãñíîŞş&*_:\\\\" +
           "___INSERT___" +
-          "Œ€ūαΑβΒγɣΓδΔεΕζΖηΗθΘιΙκΚλΛμΜνΝξΞοΟπΠρΡσΣτΤυΥφΦχΧψΨωΩάΆέΈίΊήΉύΎϊϋΰΐœţłń" +
-          "ŚśŌōżúïÎôêâû" +
+          "Œ€ūαΑβΒγɣΓδΔεΕζΖηΗθΘιΙκΚλΛμΜνΝξΞοΟπΠρΡσΣτΤυΥφΦχΧψΨωΩάΆέΈίΊήΉύΎϊϋΰΐœţłńÿ" +
+          "ČŚśŌōżúïÎôêâû" +
           "ÇÃÕÚÊÂÔ" +
           "ă" +
           "å" +
+          "ħ" +
           "'’" +
           "./%-]+" +
           "|[khmcdµ]?m[²³]|°[CFR]|C?O₂-?.*|mc²";
@@ -45,10 +50,15 @@ public class WordListValidatorTest {
   // Words that are valid but with special characters so that we don't want to
   // allow them in general:
   private static final Set<String> VALID_WORDS = new HashSet<>(Arrays.asList(
+          "Prešov",
+          "Martinů",
+          "Şanlıurfa",
+          "Žižek",
           "Háček",
           "Varaždin/S",
           "Będzin",
           "Aydın",
+          "Pavlović",
           "Poreč",
           "Čeferin",
           "Čeferin/S",
@@ -58,6 +68,9 @@ public class WordListValidatorTest {
           "Modrić/S",
           "Miłosz",
           "Arnautović/S",
+          "Dàoxuān",
+          "Sigara böreği",
+          "Sigara böreği/S",
           "Bhagavad-gītā",
           "Sønderjylland/S",
           "Utøya/S",
@@ -185,6 +198,8 @@ public class WordListValidatorTest {
           "Pÿur",
           "Subašić",
           "Wałęsa",
+          "Çalhanoğlu",
+          "Çalhanoğlu/S",
           "celebrytę", // for PL
           "antybiotykoterapię", // for PL
           "elektromobilność", // for PL
@@ -247,7 +262,7 @@ public class WordListValidatorTest {
                 " - please fix the word or add the character to the language's " + WordListValidatorTest.class.getName() + " if it's valid");
       }
     }
-    if (failures.size() > 0) {
+    if (!failures.isEmpty()) {
       fail(String.join("\n\n", failures));
     }
   }
