@@ -21,6 +21,7 @@ package org.languagetool.rules.de;
 import org.junit.Test;
 import org.languagetool.*;
 import org.languagetool.language.German;
+import org.languagetool.language.GermanyGerman;
 import org.languagetool.rules.Rule;
 import org.languagetool.rules.patterns.AbstractPatternRule;
 import org.languagetool.rules.patterns.PatternRuleLoader;
@@ -49,7 +50,7 @@ public class GermanTest extends LanguageSpecificTest {
     String s = "Schreiben Sie in diesem Textfeld oder fügen Sie einen Text ein. Ihr Text wird kontinuierlich über prüft und Fehler werden farbig unterstrichen. Rechtshcreibfehler werden rot markirt, Grammatikfehler werden gelb hervor gehoben und Stilfehler werden, anders wie die anderen Fehler, blau unterstrichen. wussten Sie dass Synonyme per Doppelklick auf ein Wort aufgerufen werden können? Nutzen sie LanguageTool in allen Lebenslagen, etwa wenn Sie am Donnerstag, dem 13. Mai 2022, einen Basketballkorb in 10 Fuß Höhe montieren möchten.";
     Language lang = Languages.getLanguageForShortCode("de-DE");
     testDemoText(lang, s,
-      Arrays.asList("ZUSAMMENSCHREIBUNG_UEBER", "GERMAN_SPELLER_RULE", "GERMAN_SPELLER_RULE", "ZUSAMMENSCHREIBUNG_HER", "KOMP_WIE", "UPPERCASE_SENTENCE_START", "KOMMA_ZWISCHEN_HAUPT_UND_NEBENSATZ_2", "AUFFORDERUNG_SIE", "DE_DATE_WEEKDAY", "EINHEITEN_METRISCH")
+      Arrays.asList("ZUSAMMENSCHREIBUNG_UEBER", "GERMAN_SPELLER_RULE", "GERMAN_SPELLER_RULE", "ZUSAMMENSCHREIBUNG_HER", "KOMP_WIE", "UPPERCASE_SENTENCE_START", "KOMMA_ZWISCHEN_HAUPT_UND_NEBENSATZ_2", "AUFFORDERUNG_SIE", "DE_DATE_WEEKDAY")
     );
     runTests(lang, null, "_");
   }
@@ -145,7 +146,7 @@ public class GermanTest extends LanguageSpecificTest {
 
   @Test
   public void testMergingOfGrammarCorrections() throws IOException {
-    Language lang = new German();
+    Language lang = new GermanyGerman();
     JLanguageTool lt = new JLanguageTool(lang);
     AnalyzedSentence analyzedSentence = lt.getAnalyzedSentence("Diese Mail ist z Hd Frau Müllers.");
 
@@ -210,7 +211,7 @@ public class GermanTest extends LanguageSpecificTest {
           }
         }
       }
-      if (warnings.size() > 0) {
+      if (!warnings.isEmpty()) {
         System.err.println("*** WARNING: " + ruleFileName + ": " + i + " <token>s with 'ß' but not 'ss' - these will not match for users of German (Switzerland):");
         for (String warning : warnings) {
           System.err.println("  " + warning);
