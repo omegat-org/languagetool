@@ -32,22 +32,22 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
-import static org.hamcrest.CoreMatchers.is;
 
 public class HunspellRuleTest {
 
   @Test
   public void testHighConfidenceSuggestion() {
     HunspellRule rule = new HunspellRule(TestTools.getMessages("de"), Languages.getLanguageForShortCode("de-DE"), null);
-    assertTrue(rule.isFirstItemHighConfidenceSuggestion("HAus", Collections.singletonList(new SuggestedReplacement("HAus"))));
-    assertFalse(rule.isFirstItemHighConfidenceSuggestion("EI", Collections.singletonList(new SuggestedReplacement("Eis"))));
-    assertFalse(rule.isFirstItemHighConfidenceSuggestion("CMs", Collections.singletonList(new SuggestedReplacement("CMS"))));
-    assertFalse(rule.isFirstItemHighConfidenceSuggestion("DMs", Collections.singletonList(new SuggestedReplacement("DMS"))));
+    assertTrue(rule.isFirstItemHighConfidenceSuggestion("HAus", List.of(new SuggestedReplacement("HAus"))));
+    assertFalse(rule.isFirstItemHighConfidenceSuggestion("EI", List.of(new SuggestedReplacement("Eis"))));
+    assertFalse(rule.isFirstItemHighConfidenceSuggestion("CMs", List.of(new SuggestedReplacement("CMS"))));
+    assertFalse(rule.isFirstItemHighConfidenceSuggestion("DMs", List.of(new SuggestedReplacement("DMS"))));
   }
   
   @Test
