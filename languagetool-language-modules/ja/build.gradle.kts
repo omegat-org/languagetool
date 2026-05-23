@@ -4,7 +4,7 @@ plugins {
 
 dependencies {
     implementation(libs.jetbrains.annotations)
-    implementation(variantOf(libs.lucene.gosen){ classifier("ipadic") })
+    implementation(variantOf(libs.lucene.gosen){ classifier("ipadic") }) { exclude(module="icu4j")}
     implementation(libs.icu4j)
     implementation(project(":languagetool-core"))
     testImplementation(libs.junit4)

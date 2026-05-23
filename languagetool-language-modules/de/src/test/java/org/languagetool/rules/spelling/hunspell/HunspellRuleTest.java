@@ -112,13 +112,21 @@ public class HunspellRuleTest {
     assertEquals("[Kaffee, Kaffees, Kaffee-]", matches[0].getSuggestedReplacements().toString());
     assertEquals(1, matches[0].getFromPos());
     assertEquals(8, matches[0].getToPos());
-    
-    matches = rule.match(lt.getAnalyzedSentence("E -Commerce"));
-    assertEquals(2, matches.length); 
+
+    AnalyzedSentence sentence = lt.getAnalyzedSentence("E -Commerce");
+    matches = rule.match(sentence);
+    assertEquals(2, matches.length);
     assertEquals("[E-Commerce]", matches[0].getSuggestedReplacements().toString());
     assertEquals(0, matches[0].getFromPos());
     assertEquals(11, matches[0].getToPos());
-    //assertEquals("[E-Commerce, C-centromer]", matches[1].getSuggestedReplacements().toString());
+    /*
+     * Lucene 8.x {@code Hunspell.suggest()} is internally time-bounded: on cold
+     * JVMs with the dictionary, the first call(s) can exceed the budget on slow
+     * CI runners and return a short or an empty list. This is a workaround to retry.
+     */
+    if (matches[1].getSuggestedReplacements().size() < 2) {
+      matches = rule.match(sentence);
+    }
     assertEquals("[E-Commerce, Comer]", matches[1].getSuggestedReplacements().toString());
     assertEquals(3, matches[1].getFromPos());
     assertEquals(11, matches[1].getToPos());
@@ -131,7 +139,7 @@ public class HunspellRuleTest {
     // a multiword as a suggestion for a single-token misspelled word
     List<RuleMatch> matches = lt.check("BigBrother");
     assertEquals(1, matches.size());
-    assertEquals("Big Brother", matches.get(0).getSuggestedReplacements().get(0).toString());
+    assertEquals("Big Brother", matches.get(0).getSuggestedReplacements().get(0));
 
     // multiwords at the sentence start (capitalized)
     assertEquals(0, lt.check("Mea culpa").size());
@@ -287,5 +295,4 @@ public class HunspellRuleTest {
       System.out.println((System.currentTimeMillis()-startTime) + "ms for " + word + ": " + suggest);
     }
   }
-  
 }

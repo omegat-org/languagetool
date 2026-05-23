@@ -20,27 +20,29 @@ dependencies {
     implementation(libs.emoji.java) {
         exclude(module = "json")
     }
-    implementation(libs.hppc)
     implementation(libs.jackson.databind)
-    implementation(libs.guava)
+    implementation(libs.guava) { exclude(module = "error_prone_annotations")}
     implementation(libs.hankcs)
     implementation(libs.language.detector)
     implementation(libs.commons.logging)
-    implementation(libs.commons.validator)
-    implementation(libs.resilience4j.circuitbreaker)
-    implementation(libs.resilience4j.micrometer)
+    implementation(libs.commons.validator) {
+        exclude(module = "commons-lang3")
+        exclude(module = "commons-logging")
+    }
+    implementation(libs.resilience4j.circuitbreaker) { exclude(module = "slf4j-api")}
+    implementation(libs.resilience4j.micrometer) { exclude(module = "slf4j-api")}
     implementation(libs.opentelemetry.api)
     implementation(libs.opentelemetry.semconv)
-    implementation(libs.grpc.stub)
+    implementation(libs.grpc.stub) { exclude(module = "error_prone_annotations")}
     implementation(libs.grpc.netty.shaded)
     implementation(libs.grpc.protobuf)
     implementation(libs.micrometer.registory.prometheus)
     implementation(libs.prometheus.simpleclient)
-    implementation(libs.prometheus.simpleclient.guava)
+    implementation(libs.prometheus.simpleclient.guava) { exclude(module = "error_prone_annotations")}
     implementation(libs.javax.activation.api)
     implementation(libs.javax.annotation.api)
     implementation(libs.javax.measure.unit)
-    implementation(libs.loomchild.segment)
+    implementation(libs.loomchild.segment) { exclude(module = "commons-logging")}
     implementation(libs.commons.lang)
     implementation(libs.commons.pool)
     implementation(libs.commons.text)
@@ -48,24 +50,28 @@ dependencies {
     implementation(libs.lucene.analyzers.common)
     implementation(libs.lucene.backward.codecs)
     implementation(libs.morfologik.fsa)
-    implementation(libs.morfologik.builders)
+    implementation(libs.morfologik.builders) { exclude(module = "hppc") }
+    implementation(libs.hppc)
     implementation(libs.morfologik.speller)
     implementation(libs.morfologik.stemming)
     implementation(libs.jetbrains.annotations)
     implementation(libs.json)
     implementation(libs.indriya)
-    implementation(libs.openregex) { exclude(module = "guava") }
-    implementation(libs.guava)
+    implementation(libs.openregex) {
+        exclude(module = "guava")
+        exclude(module = "jsr305")
+    }
     implementation(libs.java.diff.utils)
     implementation(libs.fastutil)
     // runtimeOnly(libs.jaxb.runtime)
     testFixturesApi(project(":languagetool-core"))
     testFixturesApi(libs.junit4)
     testFixturesImplementation(libs.morfologik.stemming)
-    testFixturesImplementation(libs.morfologik.builders)
+    testFixturesImplementation(libs.morfologik.builders) { exclude(module = "hppc") }
+    testFixturesImplementation(libs.hppc)
     testFixturesImplementation(libs.jetbrains.annotations)
-    testFixturesImplementation(libs.resilience4j.circuitbreaker)
-    testFixturesImplementation(libs.resilience4j.micrometer)
+    testFixturesImplementation(libs.resilience4j.circuitbreaker) { exclude(module = "slf4j-api")}
+    testFixturesImplementation(libs.resilience4j.micrometer) { exclude(module = "slf4j-api")}
     testImplementation(libs.logback.classic)
     testImplementation(libs.junit4)
     testImplementation(libs.awaitility)
