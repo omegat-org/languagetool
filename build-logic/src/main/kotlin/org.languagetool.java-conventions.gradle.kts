@@ -8,8 +8,11 @@ repositories {
     mavenCentral()
 }
 
-group = "org.omegat.lucene"
-version = "6.8-omt6.2-SNAPSHOT"
+val projectGroup: String by project
+val projectVersion: String by project
+
+group = projectGroup
+version = projectVersion
 
 java {
     toolchain {
