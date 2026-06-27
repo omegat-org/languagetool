@@ -37,4 +37,5 @@ dependencies {
     api(project(":language-zh"))
 }
 
-description = "All language modules for LanguageTool"
+setProperty("pomName", "All language modules for LanguageTool")
+description = "Meta project that has dependencies on all language modules for LanguageTool"

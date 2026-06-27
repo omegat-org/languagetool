@@ -17,4 +17,5 @@ dependencies {
     testImplementation(libs.logback.classic)
 }
 
+setProperty("pomName", "Tagalog module for LanguageTool")
 description = "Tagalog module for LanguageTool"

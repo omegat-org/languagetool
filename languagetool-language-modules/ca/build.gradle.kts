@@ -16,6 +16,7 @@ dependencies {
     testImplementation(libs.logback.classic)
 }
 
+setProperty("pomName", "Catalan module for LanguageTool")
 description = "Catalan module for LanguageTool"
 
 tasks.withType<Test> {

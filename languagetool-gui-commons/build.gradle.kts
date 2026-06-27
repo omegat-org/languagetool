@@ -11,4 +11,5 @@ dependencies {
     testImplementation(libs.logback.classic)
 }
 
-description = "LanguageTool common GUI classes"
+setProperty("pomName", "LanguageTool common GUI classes")
+description = "GUI classes for both stand-alone and LibreOffice/OpenOffice extension use"

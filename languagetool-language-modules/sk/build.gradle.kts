@@ -11,4 +11,5 @@ dependencies {
     testImplementation(libs.logback.classic)
 }
 
+setProperty("pomName", "Slovak module for LanguageTool")
 description = "Slovak module for LanguageTool"

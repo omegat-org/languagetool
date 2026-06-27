@@ -2,6 +2,7 @@ plugins {
     `java-library`
     `maven-publish`
     jacoco
+    signing
 }
 
 repositories {
@@ -14,6 +15,8 @@ val projectVersion: String by project
 group = projectGroup
 version = projectVersion
 
+extra["pomName"] = project.name
+
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
@@ -24,9 +27,56 @@ java {
 }
 
 publishing {
-    publications.create<MavenPublication>("maven") {
+    publications.create<MavenPublication>("mavenJava") {
         from(components["java"])
+        pom {
+            name.set(provider { (project.findProperty("pomName") as String?) ?: project.name })
+            description.set(provider { project.description ?: "LanguageTool library module: ${project.name}" })
+            url.set("https://github.com/omegat-org/languagetool/")
+            licenses {
+                license {
+                    name.set("GNU Lesser General Public License, Version 2.1 or later (LGPL-2.1+)")
+                    url.set("https://www.gnu.org/licenses/lgpl-2.1.html")
+                    distribution.set("repo")
+                }
+            }
+
+            developers {
+                developer {
+                    id.set("miurahr")
+                    name.set("Hiroshi Miura")
+                    email.set("miurahr@linux.com")
+                }
+            }
+
+            scm {
+                connection.set("scm:git:git://github.com/omegat-org/languagetool.git")
+                developerConnection.set("scm:git:ssh://github.com/omegat-org/languagetool.git")
+                url.set("https://github.com/omegat-org/languagetool/")
+            }
+        }
     }
+}
+
+val signKey = listOf("signingKey", "signing.keyId", "signing.gnupg.keyName").find {project.hasProperty(it)}
+tasks.withType<Sign> {
+    onlyIf { signKey != null && !project.version.toString().endsWith("-SNAPSHOT") }
+}
+
+signing {
+    when (signKey) {
+        "signingKey" -> {
+            val signingKey: String? by project
+            val signingPassword: String? by project
+            useInMemoryPgpKeys(signingKey, signingPassword)
+        }
+        "signing.keyId" -> {
+        }
+        "signing.gnupg.keyName" -> {
+            useGpgCmd()
+        }
+    }
+    sign(publishing.publications["mavenJava"])
 }
 
 tasks.withType<JavaCompile>() {

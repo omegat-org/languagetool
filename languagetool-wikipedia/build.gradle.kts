@@ -27,4 +27,5 @@ dependencies {
     testImplementation(project(":language-en"))
 }
 
+setProperty("pomName", "LanguageTool Wikipedia tools")
 description = "LanguageTool wikipedia tools"

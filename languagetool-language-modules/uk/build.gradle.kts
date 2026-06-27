@@ -22,4 +22,5 @@ tasks.test {
     ignoreFailures = true
 }
 
+setProperty("pomName", "Ukrainian module for LanguageTool")
 description = "Ukrainian module for LanguageTool"

@@ -23,6 +23,7 @@ dependencies {
     testImplementation(libs.logback.classic)
 }
 
+setProperty("pomName", "LanguageTool stand-alone GUI")
 description = "LanguageTool stand-alone GUI"
 
 tasks.withType<Test> {

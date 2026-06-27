@@ -18,4 +18,5 @@ dependencies {
     testImplementation(libs.logback.classic)
 }
 
+setProperty("pomName", "Galician module for LanguageTool")
 description = "Galician module for LanguageTool"

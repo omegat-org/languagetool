@@ -17,4 +17,5 @@ dependencies {
     testImplementation(libs.logback.classic)
 }
 
+setProperty("pomName", "Tamil module for LanguageTool")
 description = "Tamil module for LanguageTool"

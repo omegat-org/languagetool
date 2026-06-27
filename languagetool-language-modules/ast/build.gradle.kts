@@ -18,4 +18,5 @@ dependencies {
     testImplementation(libs.logback.classic)
   }
 
+setProperty("pomName", "Asturian module for LanguageTool")
 description = "Asturian module for LanguageTool"

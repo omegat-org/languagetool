@@ -53,6 +53,7 @@ dependencies {
     testAnnotationProcessor(libs.lombok)
 }
 
+setProperty("pomName", "LanguageTool embedded HTTP server")
 description = "LanguageTool embedded HTTP server"
 
 tasks.withType<Test> {

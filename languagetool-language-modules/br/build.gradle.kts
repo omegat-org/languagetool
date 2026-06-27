@@ -11,4 +11,5 @@ dependencies {
     testImplementation(libs.logback.classic)
 }
 
+setProperty("pomName", "Breton module for LanguageTool")
 description = "Breton module for LanguageTool"

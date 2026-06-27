@@ -11,4 +11,5 @@ dependencies {
     testImplementation(libs.logback.classic)
 }
 
+setProperty("pomName", "Khmer module for LanguageTool")
 description = "Khmer module for LanguageTool"

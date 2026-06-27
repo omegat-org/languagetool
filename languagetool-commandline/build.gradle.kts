@@ -16,4 +16,5 @@ dependencies {
     testImplementation(libs.logback.classic)
 }
 
+setProperty("pomName", "LanguageTool command-line version")
 description = "LanguageTool command-line version"

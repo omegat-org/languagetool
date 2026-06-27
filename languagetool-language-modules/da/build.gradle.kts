@@ -17,4 +17,5 @@ dependencies {
     testImplementation(libs.logback.classic)
 }
 
+setProperty("pomName", "Danish module for LanguageTool")
 description = "Danish module for LanguageTool"

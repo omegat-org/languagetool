@@ -17,4 +17,5 @@ dependencies {
     testImplementation(libs.logback.classic)
 }
 
+setProperty("pomName", "Esperanto module for LanguageTool")
 description = "Esperanto module for LanguageTool"

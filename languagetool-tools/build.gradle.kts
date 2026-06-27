@@ -17,4 +17,5 @@ dependencies {
     testImplementation(libs.logback.classic)
 }
 
-description = "Tools for LanguageTool"
+setProperty("pomName", "LanguageTool tools for building dictionaries")
+description = "Developer tools for building LanguageTool dictionaries"

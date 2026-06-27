@@ -18,4 +18,8 @@ dependencies {
     testImplementation(libs.logback.classic)
 }
 
-description = "Simple German module for LanguageTool"
+setProperty("pomName", "Simple German module for LanguageTool")
+description = "Simple German (\"Leichte Sprache\") is a variant of German supposed to be easy to understand. " +
+        "There are some rules, but no formal definition or standard. " +
+        "This module tries to implement some of those rules. " +
+        "Details can be found, amongst others, at http://www.leichtesprache.org/"

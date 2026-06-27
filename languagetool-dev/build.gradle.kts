@@ -31,4 +31,5 @@ dependencies {
     testRuntimeOnly(libs.logback.classic)
 }
 
-description = "LanguageTool wikipedia tools"
+setProperty("pomName", "LanguageTool development tools")
+description = "Developer tools for working with and evaluating LanguageTool"

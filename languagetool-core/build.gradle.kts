@@ -81,4 +81,7 @@ dependencies {
 	testAnnotationProcessor(libs.lombok)
 }
 
-description = "LanguageTool Style and Grammar Checker Core"
+setProperty("pomName",  "LanguageTool Style and Grammar Checker Core")
+description = "LanguageTool is an Open Source proofreading software for English, French, German, Polish, Romanian, and" +
+        " more than 20 other languages. It finds many errors that a simple spell checker cannot detect like mixing up" +
+        " there/their and it detects some grammar problems."

@@ -12,4 +12,5 @@ dependencies {
     testImplementation(libs.logback.classic)
 }
 
+setProperty("pomName", "Greek module for LanguageTool")
 description = "Greek module for LanguageTool"
