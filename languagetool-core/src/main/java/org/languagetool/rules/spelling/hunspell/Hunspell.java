@@ -10,7 +10,10 @@ import java.nio.file.StandardCopyOption;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.lucene.analysis.hunspell.TimeoutPolicy;
 import org.jetbrains.annotations.NotNull;
 import org.languagetool.JLanguageTool;
 import org.languagetool.broker.ResourceDataBroker;
@@ -42,13 +45,26 @@ public final class Hunspell {
   private static final Map<ResourcePair, HunspellDictionary> resourceCache = new HashMap<>();
 
   private static Factory hunspellDictionaryStreamFactory = viaTempFiles();
+  /**
+   * Lucene {@link TimeoutPolicy} that the built-in factory passes to every
+   * newly created {@link LuceneHunspellDictionary}. Defaults to
+   * {@link TimeoutPolicy#NO_TIMEOUT} so that aged/loaded JVMs do not silently
+   * return partial suggestion lists (the typical "[]" flake on CI).
+   */
+  @Getter
+  private static volatile TimeoutPolicy defaultTimeoutPolicy = TimeoutPolicy.RETURN_PARTIAL_RESULT;
+
+  /** Override the default {@link TimeoutPolicy} used by the built-in factory. */
+  public static void setDefaultTimeoutPolicy(TimeoutPolicy policy) {
+    defaultTimeoutPolicy = Objects.requireNonNull(policy);
+  }
 
   private static Factory viaTempFiles() {
     return new Factory() {
       @Override
       public HunspellDictionary createFromLocalFiles(String languageCode, Path dictionary, Path affix) {
         // Local files on disk - no temp files, no cleanup needed
-        return new LuceneHunspellDictionary(dictionary, affix, false);
+        return new LuceneHunspellDictionary(dictionary, affix, false, defaultTimeoutPolicy);
       }
 
       @Override
@@ -56,7 +72,7 @@ public final class Hunspell {
         // Create temp files from streams - must clean up when dictionary is closed
         var tempFiles = createTempFilesFromStreams(language, dictionaryStream, affixStream);
         log.trace("Created temp files for language {}: {} and {}", language, tempFiles.dictionary, tempFiles.affix);
-        return new LuceneHunspellDictionary(tempFiles.dictionary, tempFiles.affix, true);
+        return new LuceneHunspellDictionary(tempFiles.dictionary, tempFiles.affix, true, defaultTimeoutPolicy);
       }
     };
   }

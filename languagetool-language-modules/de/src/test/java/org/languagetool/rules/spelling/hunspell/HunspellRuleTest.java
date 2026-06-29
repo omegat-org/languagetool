@@ -18,6 +18,8 @@
  */
 package org.languagetool.rules.spelling.hunspell;
 
+import org.apache.lucene.analysis.hunspell.TimeoutPolicy;
+import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.languagetool.*;
@@ -41,6 +43,11 @@ import static org.junit.Assert.assertTrue;
 
 public class HunspellRuleTest {
 
+  @BeforeClass
+  public static void setUpClass() {
+    Hunspell.setDefaultTimeoutPolicy(TimeoutPolicy.NO_TIMEOUT);
+  }
+
   @Test
   public void testHighConfidenceSuggestion() {
     HunspellRule rule = new HunspellRule(TestTools.getMessages("de"), Languages.getLanguageForShortCode("de-DE"), null);
@@ -54,6 +61,8 @@ public class HunspellRuleTest {
   public void testRuleWithGerman() throws Exception {
     HunspellRule rule = new HunspellRule(TestTools.getMessages("de"), Languages.getLanguageForShortCode("de-DE"), null);
     JLanguageTool lt = new JLanguageTool(Languages.getLanguageForShortCode("de-DE"));
+    // Warm up the suggester
+    rule.match(lt.getAnalyzedSentence("warmupx"));
     commonGermanAsserts(rule, lt);
     assertEquals(0, rule.match(lt.getAnalyzedSentence("Der äußere Übeltäter.")).length);  // umlauts
     assertEquals(1, rule.match(lt.getAnalyzedSentence("Der äussere Übeltäter.")).length);
