@@ -22,6 +22,7 @@ dependencies {
     testImplementation(libs.morfologik.builders)
     testImplementation(testFixtures(project(":languagetool-core")))
     testImplementation(libs.logback.classic)
+    testImplementation(libs.lucene.analyzers.common)
 }
 
 setProperty("pomName", "German module for LanguageTool")

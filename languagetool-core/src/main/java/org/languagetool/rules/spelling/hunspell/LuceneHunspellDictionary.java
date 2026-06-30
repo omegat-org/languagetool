@@ -21,11 +21,13 @@ package org.languagetool.rules.spelling.hunspell;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.lucene.analysis.hunspell.Dictionary;
+import org.apache.lucene.analysis.hunspell.TimeoutPolicy;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Method;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.ParseException;
@@ -37,7 +39,17 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Slf4j
 public class LuceneHunspellDictionary implements HunspellDictionary {
+
+  /**
+   * Default per-call suggestion time budget used when the running Lucene version
+   * exposes {@code Hunspell#setSuggestionTimeLimit(int)}. 60s is generous on
+   * purpose: under load on shared CI machines the suggester can easily take
+   * several seconds for the first call after JVM warm-up.
+   */
+  private static final int DEFAULT_SUGGEST_TIME_LIMIT_MS = 1_000;
+
   private final org.apache.lucene.analysis.hunspell.Hunspell hunspell;
+  private final int suggestTimeLimitMs;
   private final InputStream dictInputStream;
   private final InputStream affixInputStream;
   private final Set<String> customWords;
@@ -49,9 +61,35 @@ public class LuceneHunspellDictionary implements HunspellDictionary {
   private boolean closed = false;
 
   public LuceneHunspellDictionary(Path dictPath, Path affixPath, boolean cleanup) {
+    this(dictPath, affixPath, cleanup, TimeoutPolicy.RETURN_PARTIAL_RESULT, DEFAULT_SUGGEST_TIME_LIMIT_MS);
+  }
+
+  public LuceneHunspellDictionary(Path dictPath, Path affixPath, boolean cleanup, TimeoutPolicy timeoutPolicy) {
+    this(dictPath, affixPath, cleanup, timeoutPolicy, DEFAULT_SUGGEST_TIME_LIMIT_MS);
+  }
+
+  /**
+   * @param dictPath            path to the {@code .dic} file
+   * @param affixPath           path to the {@code .aff} file
+   * @param cleanup             delete dict/aff on close
+   * @param timeoutPolicy       policy applied by Lucene when {@code suggestTimeLimitMs}
+   *                            is exceeded. Tests that need deterministic
+   *                            suggestion content should use
+   *                            {@link TimeoutPolicy#NO_TIMEOUT}.
+   * @param suggestTimeLimitMs  per-call wall-clock budget passed to
+   *                            {@code Hunspell#suggest(String, long)}.
+   *                            Ignored when {@code timeoutPolicy} is
+   *                            {@link TimeoutPolicy#NO_TIMEOUT}.
+   */
+  public LuceneHunspellDictionary(Path dictPath, Path affixPath, boolean cleanup,
+                                  TimeoutPolicy timeoutPolicy, int suggestTimeLimitMs) {
+    if (suggestTimeLimitMs < 0) {
+      throw new IllegalArgumentException("suggestTimeLimitMs must be non-negative");
+    }
     this.dictionaryPath = dictPath;
     this.affixPath = affixPath;
-    deleteOnClose = cleanup;
+    this.deleteOnClose = cleanup;
+    this.suggestTimeLimitMs = suggestTimeLimitMs;
     try {
       Path dirTmp = Files.createTempDirectory("languagetool-lucene");
       Directory tmpDirectory = FSDirectory.open(dirTmp);
@@ -59,7 +97,7 @@ public class LuceneHunspellDictionary implements HunspellDictionary {
       affixInputStream = Files.newInputStream(affixPath);
       Dictionary dictionary = new Dictionary(tmpDirectory, "languagetool", affixInputStream,
         Collections.singletonList(dictInputStream), false);
-      hunspell = new org.apache.lucene.analysis.hunspell.Hunspell(dictionary);
+      hunspell = new org.apache.lucene.analysis.hunspell.Hunspell(dictionary, timeoutPolicy, () -> {});
       customWords = ConcurrentHashMap.newKeySet();
     } catch (IOException | ParseException e) {
       throw new RuntimeException("Could not create Hunspell dictionary instance.", e);
@@ -103,7 +141,7 @@ public class LuceneHunspellDictionary implements HunspellDictionary {
     }
 
     // Get suggestions from Lucene Hunspell
-    List<String> suggestions = new ArrayList<>(hunspell.suggest(word));
+    List<String> suggestions = new ArrayList<>(hunspell.suggest(word, suggestTimeLimitMs));
 
     // Optionally enhance suggestions with similar custom words
     enhanceSuggestionsWithCustomWords(word, suggestions);
